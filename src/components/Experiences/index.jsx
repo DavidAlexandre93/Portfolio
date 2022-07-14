@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import embraer from '../../../public/img/embraer.jpg'
-import mara from '../../../public/img/mara.png'
-import doceamor from '../../../public/img/doceamor.png'
+import embraer from '../../../public/img/imgpadrao.png'
+import mara from '../../../public/img/imgpadrao.png'
+import doceamor from '../../../public/img/imgpadrao.png'
 
 import React from 'react';
 import 'react-slideshow-image/dist/styles.css'

@@ -33,7 +33,7 @@ export const Hero = () => {
 
       <div>
   
-          <motion.a href="https://www.linkedin.com/in/DavidAlexandre94/"
+          <motion.a href="https://www.linkedin.com/in/david-fernandes-08b005b4/"
           initial={{
             opacity: 0,
             y: 250
@@ -51,7 +51,7 @@ export const Hero = () => {
             Linkedin
           </motion.a>
       
-        <motion.a className="button" href="https://github.com/DavidAlexandre94"
+        <motion.a className="button" href="https://github.com/DavidAlexandre93"
           initial={{
             opacity: 0,
             y: 250

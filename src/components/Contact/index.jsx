@@ -41,14 +41,14 @@ export const Contact = () => {
             />        
           </ImageStyled>
           
-          <form action="https://formsubmit.co/davidalexandrefernandes1993@gmail.com" method="POST">
+          <form action="https://formsubmit.co/davidalexandrefernandes@outlook.com" method="POST">
             
             <h2>Por e-mail:</h2>
 
             <input
             type="hidden"
             name="_next"
-            value="https://DavidAlexandre.vercel.app/emailsent" />
+            value="https://davidalexandrefernandes.vercel.app/emailsent" />
 
             <input
             type="hidden"
@@ -125,10 +125,10 @@ export const Contact = () => {
             viewport={{ once: true }} // only one time
             >
               <h2>Ou por redes sociais:</h2>
-              <a href="https://api.whatsapp.com/send?phone=5514998057785" _blank="true">
+              <a href="https://api.whatsapp.com/send?phone=11959364795" _blank="true">
                 <SiWhatsapp className="whatsapp" />
               </a>
-              <a href="https://www.linkedin.com/in/DavidAlexandre94/">
+              <a href="https://www.linkedin.com/in/david-fernandes-08b005b4/">
                 <SiLinkedin className="linkedin" />
               </a>
               

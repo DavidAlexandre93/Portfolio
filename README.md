@@ -26,7 +26,7 @@ Esse portfólio foi criado para mostrar meus projetos e habilidades.
 
 ## Clonar o repositório
 ```bash
-$ git clone https://github.com/DavidAlexandre94/portfolio
+$ git clone https://github.com/DavidAlexandre93/portfolio
 ```
 
 ## Instalar dependências
@@ -39,4 +39,4 @@ yarn
 yarn dev
 ```
 
-## 😃 Gostou? me siga no -> [Likedln](https://www.linkedin.com/in/DavidAlexandre94/)
+## 😃 Gostou? me siga no -> [Likedln](https://www.linkedin.com/in/david-fernandes-08b005b4/)

@@ -14,7 +14,7 @@ export default function Home() {
         <meta charset="utf-8" />
         <meta
         name="Portfolio"
-        content="Portfolio de projetos de David Alexandre, desenvolvedor Front-End"
+        content="Portfolio de projetos de David Alexandre, Software Developer | DevOps | Software Quality | Cloud Computing | Artificial Intelligence (AI) | Blockchain(NFT/Metaverse)"
         />
         <link rel="icon" href="/favicon.png" />
         <title>David Alexandre - Portfolio</title>
