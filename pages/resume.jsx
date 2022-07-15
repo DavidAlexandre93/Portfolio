@@ -6,7 +6,7 @@ const resume = () => {
   return (
     <>
       <Head>
-        <title>Clint | Resume</title>
+        <title>David Alexandre | Resume</title>
         <meta
           name='description'
           content='I’m a front-end web developer specializing in building (and occasionally designing) exceptional digital experiences.'
@@ -20,14 +20,14 @@ const resume = () => {
           <h2 className='text-center'>Clint Briley</h2>
           <div className='flex'>
             <a
-              href='https://www.linkedin.com/in/clint-briley-50056920a/'
+              href='https://www.linkedin.com/in/david-fernandes-08b005b4/'
               target='_blank'
               rel='noreferrer'
             >
               <FaLinkedinIn size={20} style={{ marginRight: '1rem' }} />
             </a>
             <a
-              href='https://github.com/fireclint'
+              href='https://github.com/DavidAlexandre93'
               target='_blank'
               rel='noreferrer'
             >
@@ -38,26 +38,19 @@ const resume = () => {
         <div className='text-center py-4 text-xl font-bold uppercase tracking-wider'>
           <div className='hidden sm:block'>
             <p>
-              Proven Leadership <span className='px-1'>|</span> Web Development{' '}
-              <span className='px-1'>|</span> Complex Problem Solving
+              Software Developer <span className='px-1'>|</span> Devops{' '}
+              <span className='px-1'>|</span> Cloud Computing
             </p>
           </div>
           <div className='block sm:hidden'>
-            <p>Proven Leadership</p>
-            <p className='py-2'>Web Development</p>
-            <p>Complex Problem Solving</p>
+            <p>Software Developer</p>
+            <p className='py-2'>DevOps</p>
+            <p>Cloud Computing</p>
           </div>
         </div>
         <p>
-          Analytical, innovative, and motivated web development professional
-          with experience in customer service, team leadership, and
-          organizational effectiveness in fast-paced and challenging
-          environments. Adept at developing strategies and driving streamlined
-          operations. Diverse analytical skills, team collaboration, and
-          relationship building. Consummate professional, and motivated leader,
-          with solid interpersonal abilities and complex problem-solving skills.
-          Effective and proven track record of critical thinking, idea
-          generation, and optimizing efficiencies.
+        28 anos, natural do estado do Mato Grosso e atualmente residindo na região metropolitana de São Paulo, formado em técnico eletrônico e técnico em desenvolvimento de sistemas pela instituição ETEC, atualmente cursando Ciência da Computação no Centro Universitário UNASP, realizando inúmeros cursos de especialização relacionados a diversas tecnologias; entusiasta da tecnologia da informação, focado e detalhista. 
+        Carreira iniciada na área da engenharia eletrônica com mais de 5 anos de experiência, migrando para área de tecnologia já com 4 anos de experiência, iniciando na função de automação de testes e também desenvolvimento full stack, atualmente atuando como desenvolvedor full cycle, envolvendo DevOps e SRE, prestando suporte e serviços para o mundo do blockchain(NFT) metaverso e Inteligência Artificial.
         </p>
 
         {/* Skills */}
@@ -65,16 +58,15 @@ const resume = () => {
           <h5 className='text-center underline text-[18px] py-2'>Skills</h5>
           <p className='py-2'>
             <span className='font-bold'>Technical Skills</span>
-            <span className='px-2'>|</span>Front-End Web Developer
+            <span className='px-2'>|</span>Fullstack developer
             <span className='px-2'>|</span> HTML <span className='px-2'>|</span>
-            CSS <span className='px-2'>|</span>React
-            <span className='px-2'>|</span>Tailwind
-            <span className='px-2'>|</span> Firebase
+            CSS <span className='px-2'>|</span>Devops
+            <span className='px-2'>|</span>Cloud Computing
+            <span className='px-2'>|</span> SRE
           </p>
           <p className='py-2'>
-            <span className='font-bold'>Amazon Web Services</span>
-            <span className='px-2'>|</span>Amazon Web Services Cloud
-            Practitioner
+            <span className='font-bold'>Hashicorp Inc</span>
+            <span className='px-2'>|</span>Terraform
           </p>
         </div>
 
@@ -85,89 +77,70 @@ const resume = () => {
         <div className='py-6'>
           <p className='italic'>
             <span className='font-bold italic'>
-              BIGCOMMERCE, SHOPIFY, WOOCOMMERCE
+              Company name
             </span>
-            <span className='px-2'>|</span>Dallas, TX
+            <span className='px-2'>|</span>São Paulo, SP
           </p>
           <p className='py-1 italic'>Freelance Work (2013 - Current)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
             <li>
-              Ensured comprehensive mobile responsive UI layouts with
-              understanding of HTML, CSS, and JavaScript.
+            Details Experience....
             </li>
             <li>
-              Troubleshoot issues and concerns, configure operation and analytic
-              plugins, and design changes as needed.
+            Details Experience....
             </li>
             <li>
-              Worked directly with a diverse client base to understand and
-              implement multiple technologies and programs.
+            Details Experience....
             </li>
             <li>
-              Platform migration managing DNS servers as well as MX records and
-              ensuring a smooth migration process.
+            Details Experience....
             </li>
           </ul>
         </div>
         {/* Experience */}
         <div className='py-6'>
           <p className='italic'>
-            <span className='font-bold'>Preston EMS</span>
-            <span className='px-2'>|</span>Grayson County, TX
+            <span className='font-bold'>Company name</span>
+            <span className='px-2'>|</span>São Paulo, SP
           </p>
           <p className='py-1 italic'>Paramedic (2019 - Current)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
             <li>
-              Lead paramedic on an ALS 911 ambulance covering rural Grayson
-              County.
+            Details Experience....
             </li>
             <li>
-              Work surrounding departments organizing treatment protocols and
-              facilitate hands on training operations.
+            Details Experience....
             </li>
             <li>
-              Manage high stress 911 situations such as medical emergencies,
-              traumatic emergencies, and water accidents
+            Details Experience....
             </li>
             <li>
-              Public outreach and relations for the municipality from healthcare
-              awareness to training methods.
+            Details Experience....
             </li>
           </ul>
         </div>
         {/* Experience */}
         <div className='py-6'>
           <p className='italic'>
-            <span className='font-bold'>CITY OF SHERMAN, TX</span>
-            <span className='px-2'>|</span>Sherman, TX
+            <span className='font-bold'>Company name</span>
+            <span className='px-2'>|</span>São Paulo, SP
           </p>
           <p className='py-1 italic'>Paramedic / Firefighter (2010 – 2019)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
             <li>
-              Ensured proper implementation of firefighting techniques and
-              practices including controlling and extinguishing fires, operating
-              hose lines, and fire ground operations, ventilation, and search
-              and rescue.
+            Details Experience....
             </li>
             <li>
-              Oversaw comprehensive understanding, operation, and maintenance of
-              fire engines, ladder trucks, technical rescue apparatus, and
-              response trailers.
+            Details Experience....
             </li>
             <li>
-              Performed ALS techniques as needed within emergency situations
-              including the use of an esophageal or dual lumen airway device and
-              oral intubation using laryngoscopy.
+            Details Experience....
             </li>
             <li>
-              Collaborated with a talented and high performing team of
-              firefighters in high pressure and stressful situations as needed.
+            Details Experience....
             </li>
             <li>
-              Utilized proven and demonstrated knowledge of multiple
-              certifications including Pediatric Advanced Life Support,
-              Prehospital Trauma Life Support, and Advanced Cardiac Life
-              Support, among others.
+            Details Experience....
             </li>
           </ul>
         </div>

@@ -16,22 +16,12 @@ const About = () => {
             / / I am not your average developer
           </p>
           <p className='py-2 text-gray-600'>
-            I have spent the last 12 years in the fire service working as a
-            professional firefighter/paramedic. I have always had a knack for
-            technology and working with computers. In 2019 I started working
-            with HTML and CSS to make some minor edits on a small business
-            website that I was operating. What I thought was just a few small
-            edits turned into a love for programming.
+            28 anos, natural do estado do Mato Grosso e atualmente residindo na região metropolitana de São Paulo, formado em técnico eletrônico e técnico em desenvolvimento de sistemas pela instituição ETEC, atualmente cursando Ciência da Computação no Centro Universitário UNASP, realizando inúmeros cursos de especialização relacionados a diversas tecnologias; entusiasta da tecnologia da informação, focado e detalhista. 
           </p>
           <p className='py-2 text-gray-600'>
-            Fascinated with how intricate programming can be I was quickly drawn
-            to learn more. I started learning javascript and was even more
-            enthused with making websites interactive. I then started
-            freelancing for e-commerce companies on the Shopify platform. I am
-            now spending my time building projects with React JS, Firebase, and
-            learning new technologies.
+          Carreira iniciada na área da engenharia eletrônica com mais de 5 anos de experiência, migrando para área de tecnologia já com 4 anos de experiência, iniciando na função de automação de testes e também desenvolvimento full stack, atualmente atuando como desenvolvedor full cycle, envolvendo DevOps e SRE, prestando suporte e serviços para o mundo do blockchain(NFT) metaverso e Inteligência Artificial.
           </p>
-          <Link href='/#projects'>
+          <Link href='https://github.com/DavidAlexandre93?tab=repositories'>
             <p className='py-2 text-gray-600 underline cursor-pointer'>
               Check out some of my latest projects.
             </p>
