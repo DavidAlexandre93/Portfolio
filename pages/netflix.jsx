@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import netflixImg from '../public/assets/projects/tag.png';
+import netflixImg from '../public/assets/projects/logoprojects.svg';
 import { RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 
