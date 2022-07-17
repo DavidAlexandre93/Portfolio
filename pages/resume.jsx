@@ -17,7 +17,7 @@ const resume = () => {
       <div className='max-w-[940px] mx-auto p-2 pt-[120px]'>
         <h2 className='text-center'>Resume</h2>
         <div className='bg-[#d0d4d6] my-4 p-4 w-full flex justify-between items-center'>
-          <h2 className='text-center'>Clint Briley</h2>
+          <h2 className='text-center'>David Alexandre Fernandes</h2>
           <div className='flex'>
             <a
               href='https://www.linkedin.com/in/david-fernandes-08b005b4/'
@@ -81,7 +81,7 @@ const resume = () => {
             </span>
             <span className='px-2'>|</span>São Paulo, SP
           </p>
-          <p className='py-1 italic'>Freelance Work (2013 - Current)</p>
+          <p className='py-1 italic'>Freelance Work (2022 - Current)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
             <li>
             Details Experience....
@@ -103,7 +103,7 @@ const resume = () => {
             <span className='font-bold'>Company name</span>
             <span className='px-2'>|</span>São Paulo, SP
           </p>
-          <p className='py-1 italic'>Paramedic (2019 - Current)</p>
+          <p className='py-1 italic'>Freelance Work (2022 - Current)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
             <li>
             Details Experience....
@@ -125,7 +125,7 @@ const resume = () => {
             <span className='font-bold'>Company name</span>
             <span className='px-2'>|</span>São Paulo, SP
           </p>
-          <p className='py-1 italic'>Paramedic / Firefighter (2010 – 2019)</p>
+          <p className='py-1 italic'>Freelance Work (2022 - Current)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
             <li>
             Details Experience....

@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import propertyImg from '../public/assets/projects/tag.png';
-import cryptoImg from '../public/assets/projects/tag.png'
-import netflixImg from '../public/assets/projects/tag.png'
-import twitchImg from '../public/assets/projects/tag.png'
+import propertyImg from '../public/assets/projects/logoprojects.svg';
+import cryptoImg from '../public/assets/projects/logoprojects.svg'
+import netflixImg from '../public/assets/projects/logoprojects.svg'
+import twitchImg from '../public/assets/projects/logoprojects.svg'
 import ProjectItem from './ProjectItem';
 
 const Projects = () => {

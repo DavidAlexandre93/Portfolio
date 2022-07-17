@@ -5,7 +5,7 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
-import ContactImg from '../public/assets/tag.png'
+import ContactImg from '../public/assets/navLogo.svg'
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -70,9 +70,16 @@ const Contact = () => {
                     </div>
                   </a>
 
+                  <a
+                    href='https://calendly.com/davidalexandrefernandes'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                   <div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
                     <AiOutlineMail />
                   </div>
+                  </a>
+
                   <Link href='/resume'>
                     <a>
                       <div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
