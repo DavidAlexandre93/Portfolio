@@ -10,14 +10,18 @@ const Projects = () => {
     const { gsap, ScrollTrigger } = window;
     if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.fromTo('.project-card', { opacity: 0, y: 45 }, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.15,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: projectsRef.current, start: 'top 74%' },
-      });
+      gsap.fromTo(
+        '.project-card',
+        { opacity: 0, y: 45 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: projectsRef.current, start: 'top 74%' },
+        }
+      );
     }, projectsRef);
 
     return () => ctx.revert();

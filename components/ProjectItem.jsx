@@ -1,15 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const ProjectItem = ({ title, backgroundImg, tech, projectUrl }) => {
   const cardRef = useRef(null);
+
+  useEffect(() => {
+    if (!cardRef.current || !window.gsap) return;
+    window.gsap.fromTo(cardRef.current, { rotateX: 8, transformPerspective: 1000 }, { rotateX: 0, duration: 0.8, ease: 'power2.out' });
+  }, []);
 
   const animateCard = (active) => {
     if (!cardRef.current || !window.Motion?.animate) return;
     window.Motion.animate(
       cardRef.current,
-      { transform: [active ? 'perspective(1000px) rotateX(0deg) scale(1)' : 'perspective(1000px) rotateX(6deg) scale(1.02)'] },
+      { transform: [active ? 'perspective(1000px) rotateX(0deg) scale(1)' : 'perspective(1000px) rotateX(4deg) scale(1.02)'] },
       { duration: 0.25, fill: 'forwards', easing: 'ease-out' }
     );
   };
