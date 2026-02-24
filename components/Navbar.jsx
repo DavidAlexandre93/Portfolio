@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { NAV_LINKS, SOCIAL_LINKS } from '../data/siteData';
 import NavLogo from '../public/assets/navLogo.svg';
+import SocialIconLink from './shared/SocialIconLink';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -28,12 +28,11 @@ const Navbar = () => {
 
         <div>
           <ul className='desktop-nav hidden md:flex text-[#1f2937]'>
-            <li className='ml-10 text-sm uppercase hover:border-b'><Link href='/'>Home</Link></li>
-            <li className='ml-10 text-sm uppercase hover:border-b'><Link href='/#about'>About</Link></li>
-            <li className='ml-10 text-sm uppercase hover:border-b'><Link href='/#skills'>Skills</Link></li>
-            <li className='ml-10 text-sm uppercase hover:border-b'><Link href='/#projects'>Projects</Link></li>
-            <li className='ml-10 text-sm uppercase hover:border-b'><Link href='/resume'>Resume</Link></li>
-            <li className='ml-10 text-sm uppercase hover:border-b'><Link href='/#contact'>Contact</Link></li>
+            {NAV_LINKS.map((item) => (
+              <li key={item.label} className='ml-10 text-sm uppercase hover:border-b'>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
           </ul>
           <div onClick={() => setNav(!nav)} className='md:hidden'><AiOutlineMenu size={25} /></div>
         </div>
@@ -47,20 +46,18 @@ const Navbar = () => {
           </div>
           <div className='border-b border-gray-300 my-4'><p className='w-[85%] py-4'>Let&#39;s build something legendary together</p></div>
           <ul className='uppercase'>
-            <Link href='/'><li onClick={() => setNav(false)} className='py-4 text-sm'>Home</li></Link>
-            <Link href='/#about'><li onClick={() => setNav(false)} className='py-4 text-sm'>About</li></Link>
-            <Link href='/#skills'><li onClick={() => setNav(false)} className='py-4 text-sm'>Skills</li></Link>
-            <Link href='/#projects'><li onClick={() => setNav(false)} className='py-4 text-sm'>Projects</li></Link>
-            <Link href='/resume'><li onClick={() => setNav(false)} className='py-4 text-sm'>Resume</li></Link>
-            <Link href='/#contact'><li onClick={() => setNav(false)} className='py-4 text-sm'>Contact</li></Link>
+            {NAV_LINKS.map((item) => (
+              <Link key={item.label} href={item.href}>
+                <li onClick={() => setNav(false)} className='py-4 text-sm'>{item.label}</li>
+              </Link>
+            ))}
           </ul>
           <div className='pt-12'>
             <p className='uppercase tracking-widest text-[#5651e5]'>Let&#39;s Connect</p>
             <div className='flex items-center justify-between my-4 w-full sm:w-[80%]'>
-              <a href='https://www.linkedin.com/in/david-fernandes-08b005b4/' target='_blank' rel='noreferrer'><div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'><FaLinkedinIn /></div></a>
-              <a href='https://github.com/DavidAlexandre93' target='_blank' rel='noreferrer'><div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'><FaGithub /></div></a>
-              <Link href='/#contact'><div onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'><AiOutlineMail /></div></Link>
-              <Link href='/resume'><div onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'><BsFillPersonLinesFill /></div></Link>
+              {SOCIAL_LINKS.map((link) => (
+                <SocialIconLink key={link.label} {...link} onClick={() => setNav(false)} compact />
+              ))}
             </div>
           </div>
         </div>
