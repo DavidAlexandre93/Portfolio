@@ -11,21 +11,29 @@ const Skills = () => {
     if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      gsap.fromTo('.skill-card', { y: 35, opacity: 0 }, {
-        y: 0, opacity: 1, stagger: 0.06, duration: 0.55, ease: 'power2.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' }
-      });
+      gsap.fromTo(
+        '.skill-card',
+        { y: 35, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.06,
+          duration: 0.55,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' },
+        }
+      );
     }, sectionRef);
 
     const cards = sectionRef.current.querySelectorAll('.skill-card');
     cards.forEach((card) => {
       card.addEventListener('mouseenter', () => {
         if (!window.Motion?.animate) return;
-        window.Motion.animate(card, { transform: ['translateY(0px)', 'translateY(-6px) scale(1.02)'] }, { duration: 0.22, fill: 'forwards' });
+        window.Motion.animate(card, { transform: ['translateY(0px)', 'translateY(-8px) scale(1.03)'] }, { duration: 0.22, fill: 'forwards' });
       });
       card.addEventListener('mouseleave', () => {
         if (!window.Motion?.animate) return;
-        window.Motion.animate(card, { transform: ['translateY(-6px) scale(1.02)', 'translateY(0px) scale(1)'] }, { duration: 0.22, fill: 'forwards' });
+        window.Motion.animate(card, { transform: ['translateY(-8px) scale(1.03)', 'translateY(0px) scale(1)'] }, { duration: 0.22, fill: 'forwards' });
       });
     });
 

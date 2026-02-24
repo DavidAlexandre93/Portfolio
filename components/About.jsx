@@ -29,6 +29,18 @@ const About = () => {
       );
     }, aboutRef);
 
+    const imageCard = aboutRef.current.querySelector('.about-image-card');
+    if (imageCard && window.Motion?.hover) {
+      const stop = window.Motion.hover(imageCard, () => {
+        window.Motion.animate(imageCard, { transform: ['scale(1) rotate(0deg)', 'scale(1.04) rotate(-1deg)'] }, { duration: 0.3, fill: 'forwards' });
+        return () => window.Motion.animate(imageCard, { transform: ['scale(1.04) rotate(-1deg)', 'scale(1) rotate(0deg)'] }, { duration: 0.3, fill: 'forwards' });
+      });
+      return () => {
+        stop();
+        ctx.revert();
+      };
+    }
+
     return () => ctx.revert();
   }, []);
 
@@ -51,7 +63,7 @@ const About = () => {
             <p className='about-reveal py-2 text-gray-600 underline cursor-pointer'>Check out some of my latest projects.</p>
           </Link>
         </div>
-        <div className='about-reveal w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300'>
+        <div className='about-reveal about-image-card w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center p-4'>
           <Image src={AboutImg} className='rounded-xl' alt='Perfil de David Alexandre Fernandes' />
         </div>
       </div>

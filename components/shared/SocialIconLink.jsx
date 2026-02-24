@@ -1,11 +1,25 @@
 import Link from 'next/link';
 import React from 'react';
 
-const baseClasses = 'rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300';
+const baseClasses = 'rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer';
 
 const SocialIconLink = ({ href, icon: Icon, label, external = false, onClick, compact = false }) => {
+  const handleMouse = (event, hovering) => {
+    if (!window.Motion?.animate) return;
+    window.Motion.animate(
+      event.currentTarget,
+      { transform: [hovering ? 'translateY(0px) scale(1)' : 'translateY(-6px) scale(1.06)'] },
+      { duration: 0.2, fill: 'forwards', easing: 'ease-out' }
+    );
+  };
+
   const content = (
-    <div onClick={onClick} className={compact ? baseClasses.replace('p-6', 'p-3') : baseClasses}>
+    <div
+      onClick={onClick}
+      onMouseEnter={(event) => handleMouse(event, true)}
+      onMouseLeave={(event) => handleMouse(event, false)}
+      className={compact ? baseClasses.replace('p-6', 'p-3') : baseClasses}
+    >
       <Icon />
     </div>
   );

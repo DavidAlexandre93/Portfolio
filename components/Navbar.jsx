@@ -17,9 +17,14 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.Motion?.animate) return;
-    window.Motion.animate('.desktop-nav li', { opacity: [0, 1], transform: ['translateY(-10px)', 'translateY(0px)'] }, { delay: window.Motion.stagger(0.05), duration: 0.35, easing: 'ease-out' });
+    if (typeof window === 'undefined' || !window.gsap) return;
+    window.gsap.fromTo('.desktop-nav li', { opacity: 0, y: -10 }, { opacity: 1, y: 0, stagger: 0.06, duration: 0.35, ease: 'power2.out' });
   }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.gsap) return;
+    window.gsap.to('.mobile-menu', { x: nav ? 0 : '-100%', duration: 0.35, ease: 'power2.out' });
+  }, [nav]);
 
   return (
     <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100] bg-[#ecf0f3]/90 backdrop-blur-md ease-in-out duration-300' : 'fixed w-full h-20 z-[100] bg-transparent'}>
@@ -39,7 +44,7 @@ const Navbar = () => {
       </div>
 
       <div className={nav ? 'md:hidden fixed left-0 top-0 w-full h-screen bg-black/70' : ''}>
-        <div className={nav ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500' : 'fixed left-[-100%] top-0 p-10 ease-in duration-500'}>
+        <div className={nav ? 'mobile-menu fixed left-0 top-0 w-[75%] sm:w-[60%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500' : 'mobile-menu fixed left-[-100%] top-0 p-10 ease-in duration-500'}>
           <div className='flex w-full items-center justify-between'>
             <Link href='/'><a><Image src={NavLogo} width='87' height='35' alt='Logo' /></a></Link>
             <div onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'><AiOutlineClose /></div>

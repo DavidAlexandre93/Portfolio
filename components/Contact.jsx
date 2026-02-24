@@ -22,6 +22,19 @@ const Contact = () => {
       gsap.fromTo('.contact-panel', { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, scrollTrigger: { trigger: contactRef.current, start: 'top 72%' } });
       gsap.fromTo('.contact-form', { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, scrollTrigger: { trigger: contactRef.current, start: 'top 72%' } });
     }, contactRef);
+
+    const form = contactRef.current.querySelector('.contact-form');
+    if (form && window.Motion?.hover) {
+      const stop = window.Motion.hover(form, () => {
+        window.Motion.animate(form, { transform: ['translateY(0px)', 'translateY(-4px)'] }, { duration: 0.2, fill: 'forwards' });
+        return () => window.Motion.animate(form, { transform: ['translateY(-4px)', 'translateY(0px)'] }, { duration: 0.2, fill: 'forwards' });
+      });
+      return () => {
+        stop();
+        ctx.revert();
+      };
+    }
+
     return () => ctx.revert();
   }, []);
 
