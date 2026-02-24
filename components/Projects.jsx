@@ -1,8 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import propertyImg from '../public/assets/projects/logoprojects.svg';
-import cryptoImg from '../public/assets/projects/logoprojects.svg';
-import netflixImg from '../public/assets/projects/logoprojects.svg';
-import twitchImg from '../public/assets/projects/logoprojects.svg';
+import { PROJECTS } from '../data/siteData';
 import ProjectItem from './ProjectItem';
 
 const Projects = () => {
@@ -32,10 +29,9 @@ const Projects = () => {
         <p className='text-xl tracking-widest uppercase text-[#5651e5]'>Projects</p>
         <h2 className='py-4'>What I&apos;ve Built</h2>
         <div className='grid md:grid-cols-2 gap-8'>
-          <ProjectItem title='Projeto integrador Bootcamp - Mercado Livre' backgroundImg={propertyImg} projectUrl='/property' tech='SpringBoot - Java' />
-          <ProjectItem title='Hortelan' backgroundImg={cryptoImg} projectUrl='/crypto' tech='PHP, MySQL, Javascript, Bootstrap4 e Arduino(IOT)' />
-          <ProjectItem title='API' backgroundImg={netflixImg} projectUrl='/netflix' tech='FastAPI - Python' />
-          <ProjectItem title='Website' backgroundImg={twitchImg} projectUrl='/twitch' tech='Next JS' />
+          {PROJECTS.map((project) => (
+            <ProjectItem key={project.title} {...project} />
+          ))}
         </div>
       </div>
     </div>

@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
-import { AiOutlineMail } from 'react-icons/ai';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import { SOCIAL_LINKS } from '../data/siteData';
 import ContactImg from '../public/assets/navLogo.svg';
+import SocialIconLink from './shared/SocialIconLink';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -49,10 +48,9 @@ const Contact = () => {
               <p className='py-4'>I am available for freelance. Contact me and let&apos;s talk.</p>
               <p className='uppercase pt-8'>Connect With Me</p>
               <div className='flex items-center justify-between py-4'>
-                <a href='https://www.linkedin.com/in/david-fernandes-08b005b4/' target='_blank' rel='noreferrer'><div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'><FaLinkedinIn /></div></a>
-                <a href='https://github.com/DavidAlexandre93' target='_blank' rel='noreferrer'><div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'><FaGithub /></div></a>
-                <a href='https://calendly.com/davidalexandrefernandes' target='_blank' rel='noreferrer'><div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'><AiOutlineMail /></div></a>
-                <Link href='/resume'><a><div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'><BsFillPersonLinesFill /></div></a></Link>
+                {SOCIAL_LINKS.map((link) => (
+                  <SocialIconLink key={link.label} {...link} />
+                ))}
               </div>
             </div>
           </div>

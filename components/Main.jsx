@@ -1,8 +1,6 @@
-import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
-import { AiOutlineMail } from 'react-icons/ai';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { SOCIAL_LINKS } from '../data/siteData';
+import SocialIconLink from './shared/SocialIconLink';
 
 const Main = () => {
   const heroRef = useRef(null);
@@ -64,26 +62,11 @@ const Main = () => {
             DevOps e SRE, apoiando projetos de blockchain, metaverso e inteligência artificial.
           </p>
           <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
-            <a href='https://www.linkedin.com/in/david-fernandes-08b005b4/' target='_blank' rel='noreferrer'>
-              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                <FaLinkedinIn />
+            {SOCIAL_LINKS.map((link) => (
+              <div key={link.label} className='social-card'>
+                <SocialIconLink {...link} />
               </div>
-            </a>
-            <a href='https://github.com/DavidAlexandre93' target='_blank' rel='noreferrer'>
-              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                <FaGithub />
-              </div>
-            </a>
-            <Link href='https://calendly.com/davidalexandrefernandes'>
-              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                <AiOutlineMail />
-              </div>
-            </Link>
-            <Link href='/resume'>
-              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                <BsFillPersonLinesFill />
-              </div>
-            </Link>
+            ))}
           </div>
         </div>
       </div>
