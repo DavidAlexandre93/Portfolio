@@ -22,18 +22,18 @@ import ProjectsCover from '../public/assets/projects/logoprojects.svg';
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/#about' },
+  { label: 'Sobre', href: '/#about' },
   { label: 'Skills', href: '/#skills' },
-  { label: 'Projects', href: '/#projects' },
-  { label: 'Resume', href: '/resume' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Projetos', href: '/#projects' },
+  { label: 'Currículo', href: '/resume' },
+  { label: 'Contato', href: '/#contact' },
 ];
 
 export const SOCIAL_LINKS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/david-fernandes-08b005b4/', icon: FaLinkedinIn, external: true },
   { label: 'GitHub', href: 'https://github.com/DavidAlexandre93', icon: FaGithub, external: true },
   { label: 'Calendly', href: 'https://calendly.com/davidalexandrefernandes', icon: AiOutlineMail, external: true },
-  { label: 'Resume', href: '/resume', icon: BsFillPersonLinesFill, external: false },
+  { label: 'Currículo', href: '/resume', icon: BsFillPersonLinesFill, external: false },
 ];
 
 export const SKILLS = [
@@ -43,8 +43,8 @@ export const SKILLS = [
   { title: 'React', icon: ReactImg },
   { title: 'Tailwind', icon: Tailwind },
   { title: 'Firebase', icon: Firebase },
-  { title: 'Github', icon: Github },
-  { title: 'NextJS', icon: NextJS },
+  { title: 'GitHub', icon: Github },
+  { title: 'Next.js', icon: NextJS },
   { title: 'AWS', icon: AWS },
   { title: 'GCP', icon: GCP },
   { title: 'Docker', icon: Docker },
@@ -56,8 +56,8 @@ export const SKILLS = [
 ];
 
 export const PROJECTS = [
-  { title: 'Projeto integrador Bootcamp - Mercado Livre', backgroundImg: ProjectsCover, projectUrl: '/property', tech: 'SpringBoot - Java' },
-  { title: 'Hortelan', backgroundImg: ProjectsCover, projectUrl: '/crypto', tech: 'PHP, MySQL, Javascript, Bootstrap4 e Arduino(IOT)' },
-  { title: 'API', backgroundImg: ProjectsCover, projectUrl: '/netflix', tech: 'FastAPI - Python' },
-  { title: 'Website', backgroundImg: ProjectsCover, projectUrl: '/twitch', tech: 'Next JS' },
+  { title: 'Projeto Integrador - Bootcamp Mercado Livre', backgroundImg: ProjectsCover, projectUrl: '/property', tech: 'Spring Boot · Java · MySQL' },
+  { title: 'Hortelan (IoT + Web)', backgroundImg: ProjectsCover, projectUrl: '/crypto', tech: 'PHP · MySQL · JavaScript · Arduino' },
+  { title: 'API REST com FastAPI', backgroundImg: ProjectsCover, projectUrl: '/netflix', tech: 'FastAPI · Python · MySQL' },
+  { title: 'Website Institucional', backgroundImg: ProjectsCover, projectUrl: '/twitch', tech: 'Next.js · Tailwind CSS' },
 ];
