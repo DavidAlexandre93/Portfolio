@@ -1,12 +1,18 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Requisitos
+
+- Node.js **20.x** (recomendado usar `nvm use` com o arquivo `.nvmrc`).
+
 ## Getting Started
 
-First, run the development server:
+First, instale as dependências e execute o servidor de desenvolvimento:
 
 ```bash
+npm install
 npm run dev
 # or
+yarn
 yarn dev
 ```
 
