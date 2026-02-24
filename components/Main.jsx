@@ -1,50 +1,86 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 const Main = () => {
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !heroRef.current) return;
+
+    const hero = heroRef.current;
+    const cards = hero.querySelectorAll('.social-card');
+    const title = hero.querySelector('.hero-title');
+    const subtitle = hero.querySelector('.hero-subtitle');
+
+    const animateHero = () => {
+      if (!window.gsap) return;
+      const tl = window.gsap.timeline({ defaults: { ease: 'power3.out' } });
+      tl.fromTo(title, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9 })
+        .fromTo(subtitle, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.6')
+        .fromTo(cards, { y: 18, opacity: 0, scale: 0.92 }, { y: 0, opacity: 1, scale: 1, duration: 0.45, stagger: 0.12 }, '-=0.4');
+    };
+
+    const animateOrbs = () => {
+      if (!window.Motion?.animate) return;
+      const orbs = hero.querySelectorAll('.hero-orb');
+      orbs.forEach((orb, index) => {
+        window.Motion.animate(
+          orb,
+          {
+            transform: [
+              'translate3d(0px, 0px, 0px) scale(1)',
+              `translate3d(${index % 2 === 0 ? 28 : -22}px, ${index % 2 === 0 ? -18 : 24}px, 0px) scale(1.08)`,
+              'translate3d(0px, 0px, 0px) scale(1)',
+            ],
+            opacity: [0.45, 0.8, 0.45],
+          },
+          { duration: 4.8 + index, repeat: Infinity, easing: 'ease-in-out' }
+        );
+      });
+    };
+
+    animateHero();
+    animateOrbs();
+  }, []);
+
   return (
-    <div id='home' className='w-full h-screen text-center'>
-      <div className='max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center'>
-        <div>
-          <p className='uppercase text-sm tracking-widest text-gray-600'>
-            LET&#39;S BUILD SOMETHING TOGETHER
-          </p>
-          <h1 className='py-4 text-gray-700'>
+    <div id='home' ref={heroRef} className='w-full min-h-screen text-center relative overflow-hidden'>
+      <div className='hero-orb absolute -top-20 -left-16 w-72 h-72 bg-violet-300/40 rounded-full blur-3xl' />
+      <div className='hero-orb absolute top-40 -right-20 w-80 h-80 bg-sky-300/40 rounded-full blur-3xl' />
+      <div className='hero-orb absolute bottom-10 left-[25%] w-56 h-56 bg-indigo-300/30 rounded-full blur-3xl' />
+
+      <div className='max-w-[1240px] w-full min-h-screen mx-auto p-2 flex justify-center items-center'>
+        <div className='backdrop-blur-[2px]'>
+          <p className='uppercase text-sm tracking-widest text-gray-600'>LET&#39;S BUILD SOMETHING TOGETHER</p>
+          <h1 className='py-4 text-gray-700 hero-title'>
             Hi, I&#39;m <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
           </h1>
-          <h1 className='py-2 text-gray-700'>Software Developer | DevOps | Software Quality | Cloud Computing | Artificial Intelligence (AI) | Blockchain(NFT/Metaverse)</h1>
+          <h1 className='py-2 text-gray-700 hero-subtitle'>Software Developer | DevOps | SRE | Cloud | AI | Blockchain</h1>
           <p className='py-4 text-gray-600 sm:max-w-[70%] m-auto'>
-             Carreira iniciada na área da engenharia eletrônica com mais de 5 anos de experiência, migrando para área de tecnologia já com 4 anos de experiência, iniciando na função de automação de testes e também desenvolvimento full stack, atualmente atuando como desenvolvedor full cycle, envolvendo DevOps e SRE, prestando suporte e serviços para o mundo do blockchain(NFT) metaverso e Inteligência Artificial.
+            Carreira iniciada na engenharia eletrônica e evoluída para tecnologia com atuação full cycle em desenvolvimento, automação,
+            DevOps e SRE, apoiando projetos de blockchain, metaverso e inteligência artificial.
           </p>
           <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
-            <a
-              href='https://www.linkedin.com/in/david-fernandes-08b005b4/'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
+            <a href='https://www.linkedin.com/in/david-fernandes-08b005b4/' target='_blank' rel='noreferrer'>
+              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
                 <FaLinkedinIn />
               </div>
             </a>
-            <a
-              href='https://github.com/DavidAlexandre93'
-              target='_blank'
-              rel='noreferrer'
-            >
-              <div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
+            <a href='https://github.com/DavidAlexandre93' target='_blank' rel='noreferrer'>
+              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
                 <FaGithub />
               </div>
             </a>
             <Link href='https://calendly.com/davidalexandrefernandes'>
-              <div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
+              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
                 <AiOutlineMail />
               </div>
             </Link>
             <Link href='/resume'>
-              <div className='rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
+              <div className='social-card rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
                 <BsFillPersonLinesFill />
               </div>
             </Link>
