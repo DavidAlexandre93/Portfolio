@@ -51,15 +51,15 @@ const Contact = () => {
     <div id='contact' ref={contactRef} className='w-full lg:h-screen'>
       <div className='max-w-[1240px] m-auto px-2 py-16 w-full'>
         <p className='text-xl tracking-widest uppercase text-[#5651e5]'>Contact</p>
-        <h2 className='py-4'>Get In Touch</h2>
+        <h2 className='py-4'>Entre em contato</h2>
         <div className='grid lg:grid-cols-5 gap-8'>
           <div className='contact-panel col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4'>
             <div className='lg:p-4 h-full'>
               <Image className='rounded-xl' src={ContactImg} alt='Contact logo' />
               <h2 className='py-2'>David Alexandre Fernandes</h2>
-              <p>Software Developer</p>
-              <p className='py-4'>I am available for freelance. Contact me and let&apos;s talk.</p>
-              <p className='uppercase pt-8'>Connect With Me</p>
+              <p>Software Developer | DevOps | SRE</p>
+              <p className='py-4'>Disponível para oportunidades e projetos. Vamos conversar.</p>
+              <p className='uppercase pt-8'>Conecte-se comigo</p>
               <div className='flex items-center justify-between py-4'>
                 {SOCIAL_LINKS.map((link) => (
                   <SocialIconLink key={link.label} {...link} />
@@ -73,11 +73,11 @@ const Contact = () => {
               <form onSubmit={handleSubmit}>
                 <div className='grid md:grid-cols-2 gap-4 w-full py-2'>
                   <div className='flex flex-col'>
-                    <label className='uppercase text-sm py-2'>Name</label>
+                    <label className='uppercase text-sm py-2'>Nome</label>
                     <input className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
                   <div className='flex flex-col'>
-                    <label className='uppercase text-sm py-2'>Phone Number</label>
+                    <label className='uppercase text-sm py-2'>Telefone</label>
                     <input className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={phone} onChange={(e) => setPhone(e.target.value)} />
                   </div>
                 </div>
@@ -86,14 +86,14 @@ const Contact = () => {
                   <input className='border-2 rounded-lg p-3 flex border-gray-300' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className='flex flex-col py-2'>
-                  <label className='uppercase text-sm py-2'>Subject</label>
+                  <label className='uppercase text-sm py-2'>Assunto</label>
                   <input className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={subject} onChange={(e) => setSubject(e.target.value)} />
                 </div>
                 <div className='flex flex-col py-2'>
-                  <label className='uppercase text-sm py-2'>Message</label>
+                  <label className='uppercase text-sm py-2'>Mensagem</label>
                   <textarea className='border-2 rounded-lg p-3 border-gray-300' rows='10' value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
-                <button className='w-full p-4 text-gray-100 mt-4'>Send Message</button>
+                <button className='w-full p-4 text-gray-100 mt-4'>Enviar mensagem</button>
               </form>
             </div>
           </div>

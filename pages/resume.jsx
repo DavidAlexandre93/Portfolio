@@ -9,7 +9,7 @@ const resume = () => {
         <title>David Alexandre | Resume</title>
         <meta
           name='description'
-          content='I’m a front-end web developer specializing in building (and occasionally designing) exceptional digital experiences.'
+          content='Resumo profissional de David Alexandre Fernandes, com foco em desenvolvimento full cycle, DevOps, SRE e cloud computing.'
         />
         <link rel='icon' href='/fav.png' />
       </Head>
@@ -19,129 +19,103 @@ const resume = () => {
         <div className='bg-[#d0d4d6] my-4 p-4 w-full flex justify-between items-center'>
           <h2 className='text-center'>David Alexandre Fernandes</h2>
           <div className='flex'>
-            <a
-              href='https://www.linkedin.com/in/david-fernandes-08b005b4/'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href='https://www.linkedin.com/in/david-fernandes-08b005b4/' target='_blank' rel='noreferrer'>
               <FaLinkedinIn size={20} style={{ marginRight: '1rem' }} />
             </a>
-            <a
-              href='https://github.com/DavidAlexandre93'
-              target='_blank'
-              rel='noreferrer'
-            >
+            <a href='https://github.com/DavidAlexandre93' target='_blank' rel='noreferrer'>
               <FaGithub size={20} style={{ marginRight: '1rem' }} />
             </a>
           </div>
         </div>
+
         <div className='text-center py-4 text-xl font-bold uppercase tracking-wider'>
           <div className='hidden sm:block'>
             <p>
-              Software Developer <span className='px-1'>|</span> Devops{' '}
+              Software Developer <span className='px-1'>|</span> DevOps <span className='px-1'>|</span> SRE{' '}
               <span className='px-1'>|</span> Cloud Computing
             </p>
           </div>
           <div className='block sm:hidden'>
             <p>Software Developer</p>
-            <p className='py-2'>DevOps</p>
+            <p className='py-2'>DevOps | SRE</p>
             <p>Cloud Computing</p>
           </div>
         </div>
+
         <p>
-        28 anos, natural do estado do Mato Grosso e atualmente residindo na região metropolitana de São Paulo, formado em técnico eletrônico e técnico em desenvolvimento de sistemas pela instituição ETEC, atualmente cursando Ciência da Computação no Centro Universitário UNASP, realizando inúmeros cursos de especialização relacionados a diversas tecnologias; entusiasta da tecnologia da informação, focado e detalhista. 
-        Carreira iniciada na área da engenharia eletrônica com mais de 5 anos de experiência, migrando para área de tecnologia já com 4 anos de experiência, iniciando na função de automação de testes e também desenvolvimento full stack, atualmente atuando como desenvolvedor full cycle, envolvendo DevOps e SRE, prestando suporte e serviços para o mundo do blockchain(NFT) metaverso e Inteligência Artificial.
+          Profissional de tecnologia com base técnica em eletrônica e desenvolvimento de sistemas, atualmente cursando Ciência da
+          Computação no UNASP. Possui mais de 5 anos de experiência prévia em engenharia eletrônica e 4+ anos na área de tecnologia,
+          com atuação em automação de testes, desenvolvimento full stack e evolução para desenvolvimento full cycle com práticas de
+          DevOps e SRE.
+        </p>
+        <p className='py-3'>
+          Perfil orientado à entrega de produto digital com qualidade, observabilidade, performance e confiabilidade, apoiando iniciativas
+          em blockchain, metaverso e inteligência artificial.
         </p>
 
-        {/* Skills */}
         <div className='text-center py-4'>
           <h5 className='text-center underline text-[18px] py-2'>Skills</h5>
           <p className='py-2'>
-            <span className='font-bold'>Technical Skills</span>
-            <span className='px-2'>|</span>Fullstack developer
-            <span className='px-2'>|</span> HTML <span className='px-2'>|</span>
-            CSS <span className='px-2'>|</span>Devops
-            <span className='px-2'>|</span>Cloud Computing
-            <span className='px-2'>|</span> SRE
+            <span className='font-bold'>Stack Principal</span>
+            <span className='px-2'>|</span>JavaScript
+            <span className='px-2'>|</span>TypeScript
+            <span className='px-2'>|</span>React
+            <span className='px-2'>|</span>Next.js
+            <span className='px-2'>|</span>Node.js
+            <span className='px-2'>|</span>Python (FastAPI)
+            <span className='px-2'>|</span>Go
           </p>
           <p className='py-2'>
-            <span className='font-bold'>Hashicorp Inc</span>
+            <span className='font-bold'>Cloud & DevOps</span>
+            <span className='px-2'>|</span>Docker
+            <span className='px-2'>|</span>Kubernetes
+            <span className='px-2'>|</span>AWS
+            <span className='px-2'>|</span>GCP
             <span className='px-2'>|</span>Terraform
+            <span className='px-2'>|</span>CI/CD
+            <span className='px-2'>|</span>Observability
           </p>
         </div>
 
-        <h5 className='text-center underline text-[18px] py-4'>
-          Professional Experience
-        </h5>
-        {/* Experience */}
+        <h5 className='text-center underline text-[18px] py-4'>Professional Experience</h5>
+
         <div className='py-6'>
           <p className='italic'>
-            <span className='font-bold italic'>
-              Company name
-            </span>
+            <span className='font-bold italic'>Desenvolvedor Full Cycle | DevOps | SRE</span>
             <span className='px-2'>|</span>São Paulo, SP
           </p>
-          <p className='py-1 italic'>Freelance Work (2022 - Current)</p>
+          <p className='py-1 italic'>Projetos e serviços em tecnologia (2022 - Atual)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
+            <li>Atuação ponta a ponta em projetos web, APIs e automações, da concepção ao deploy e suporte.</li>
+            <li>Implementação de boas práticas de DevOps e SRE: pipelines, monitoramento e melhoria de confiabilidade.</li>
+            <li>Suporte técnico a iniciativas ligadas a blockchain (NFT), metaverso e inteligência artificial.</li>
+            <li>Foco em entregas contínuas com qualidade, performance e experiência do usuário alinhadas ao negócio.</li>
           </ul>
         </div>
-        {/* Experience */}
+
         <div className='py-6'>
           <p className='italic'>
-            <span className='font-bold'>Company name</span>
+            <span className='font-bold'>Desenvolvedor Full Stack e Automação de Testes</span>
             <span className='px-2'>|</span>São Paulo, SP
           </p>
-          <p className='py-1 italic'>Freelance Work (2022 - Current)</p>
+          <p className='py-1 italic'>Transição e consolidação na área de tecnologia (2020 - 2022)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
+            <li>Desenvolvimento de funcionalidades web e APIs para produtos digitais.</li>
+            <li>Criação e manutenção de automações de testes para melhoria de qualidade e redução de retrabalho.</li>
+            <li>Integração entre times técnicos e de produto para priorização e execução de demandas.</li>
           </ul>
         </div>
-        {/* Experience */}
+
         <div className='py-6'>
           <p className='italic'>
-            <span className='font-bold'>Company name</span>
-            <span className='px-2'>|</span>São Paulo, SP
+            <span className='font-bold'>Engenharia Eletrônica</span>
+            <span className='px-2'>|</span>Mato Grosso / São Paulo
           </p>
-          <p className='py-1 italic'>Freelance Work (2022 - Current)</p>
+          <p className='py-1 italic'>Experiência anterior à migração para TI (2015 - 2020)</p>
           <ul className='list-disc list-outside px-7 py-1 leading-relaxed'>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
-            <li>
-            Details Experience....
-            </li>
+            <li>Mais de 5 anos de experiência em engenharia eletrônica e rotinas técnicas especializadas.</li>
+            <li>Base sólida em análise, diagnóstico e resolução de problemas complexos em ambiente técnico.</li>
+            <li>Competências transferidas para TI: disciplina operacional, pensamento sistêmico e melhoria contínua.</li>
           </ul>
         </div>
       </div>

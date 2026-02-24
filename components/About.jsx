@@ -48,23 +48,23 @@ const About = () => {
     <div id='about' ref={aboutRef} className='w-full md:h-screen p-2 flex items-center py-16'>
       <div className='max-w-[1240px] m-auto md:grid grid-cols-3 gap-8'>
         <div className='col-span-2'>
-          <p className='about-reveal uppercase text-xl tracking-widest text-[#5651e5]'>About</p>
-          <h2 className='about-reveal py-4'>Who I Am</h2>
-          <p className='about-reveal py-2 text-gray-600'>/ / I am not your average developer</p>
+          <p className='about-reveal uppercase text-xl tracking-widest text-[#5651e5]'>Sobre</p>
+          <h2 className='about-reveal py-4'>Quem Sou</h2>
+          <p className='about-reveal py-2 text-gray-600'>/ / Desenvolvedor focado em entrega de valor real para o negócio.</p>
           <p className='about-reveal py-2 text-gray-600'>
-            28 anos, natural do estado do Mato Grosso e residindo na região metropolitana de São Paulo, com formação técnica em eletrônica
-            e desenvolvimento de sistemas, atualmente cursando Ciência da Computação.
+            Natural de Mato Grosso e residente na região metropolitana de São Paulo, com formação técnica em eletrônica e desenvolvimento
+            de sistemas. Atualmente cursando Ciência da Computação no UNASP.
           </p>
           <p className='about-reveal py-2 text-gray-600'>
-            Perfil focado em entrega realista de produto digital: qualidade, observabilidade, performance e experiência de usuário alinhadas
-            ao negócio.
+            Experiência prática em desenvolvimento full stack/full cycle, automação de testes, DevOps e SRE, com foco em qualidade,
+            observabilidade, performance e experiência do usuário.
           </p>
           <Link href='https://github.com/DavidAlexandre93?tab=repositories'>
-            <p className='about-reveal py-2 text-gray-600 underline cursor-pointer'>Check out some of my latest projects.</p>
+            <p className='about-reveal py-2 text-gray-600 underline cursor-pointer'>Veja alguns dos meus projetos mais recentes no GitHub.</p>
           </Link>
         </div>
-        <div className='about-reveal about-image-card w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center p-4'>
-          <Image src={AboutImg} className='rounded-xl' alt='Perfil de David Alexandre Fernandes' />
+        <div className='about-reveal about-image-card w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300'>
+          <Image src={AboutImg} className='rounded-xl' alt='Foto de perfil David Alexandre Fernandes' />
         </div>
       </div>
     </div>

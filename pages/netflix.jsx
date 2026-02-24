@@ -24,29 +24,29 @@ const netflix = () => {
 
       <div className='max-w-[1240px] mx-auto p-2 grid md:grid-cols-5 gap-8 py-8'>
         <div className='col-span-4'>
-          <p>Project</p>
-          <h2>Overview</h2>
+          <p>Projeto</p>
+          <h2>Visão geral</h2>
           <p>
-            API desenvolvida para fins didáticos com FastAPI
+            API REST criada com FastAPI para estudos de arquitetura, modelagem de dados e operações CRUD.
           </p>
           <a
             href='https://github.com/DavidAlexandre93/Python-FastAPI.git'
             target='_blank'
             rel='noreferrer'
           >
-            <button className='px-8 py-2 mt-4 mr-8'>Code</button>
+            <button className='px-8 py-2 mt-4 mr-8'>Código</button>
           </a>
           <a
             href='https://github.com/DavidAlexandre93/Python-FastAPI.git'
             target='_blank'
             rel='noreferrer'
           >
-            <button className='px-8 py-2 mt-4'>Demo</button>
+            <button className='px-8 py-2 mt-4'>Demonstração</button>
           </a>
         </div>
         <div className='col-span-4 md:col-span-1 shadow-xl shadow-gray-400 rounded-xl py-4'>
           <div className='p-2'>
-            <p className='text-center font-bold pb-2'>Technologies</p>
+            <p className='text-center font-bold pb-2'>Tecnologias</p>
             <div className='grid grid-cols-3 md:grid-cols-1'>
               <p className='text-gray-600 py-2 flex items-center'>
                 <RiRadioButtonFill className='pr-1' /> FastAPI
@@ -67,7 +67,7 @@ const netflix = () => {
           </div>
         </div>
         <Link href='/#projects'>
-          <p className='underline cursor-pointer'>Back</p>
+          <p className='underline cursor-pointer'>Voltar</p>
         </Link>
       </div>
     </div>

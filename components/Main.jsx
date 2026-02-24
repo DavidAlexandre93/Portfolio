@@ -33,14 +33,14 @@ const Main = () => {
 
       <div className='max-w-[1240px] w-full min-h-screen mx-auto p-2 flex justify-center items-center'>
         <div className='backdrop-blur-[2px]'>
-          <p className='uppercase text-sm tracking-widest text-gray-600'>LET&#39;S BUILD SOMETHING TOGETHER</p>
+          <p className='uppercase text-sm tracking-widest text-gray-600'>DESENVOLVENDO SOLUÇÕES DIGITAIS COM FOCO EM RESULTADO</p>
           <h1 className='py-4 text-gray-700 hero-title'>
-            Hi, I&#39;m <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
+            Olá, eu sou <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
           </h1>
           <h1 className='py-2 text-gray-700 hero-subtitle'>Software Developer | DevOps | SRE | Cloud | AI | Blockchain</h1>
           <p className='hero-text py-4 text-gray-600 sm:max-w-[70%] m-auto'>
-            Carreira iniciada na engenharia eletrônica e evoluída para tecnologia com atuação full cycle em desenvolvimento, automação,
-            DevOps e SRE, apoiando projetos de blockchain, metaverso e inteligência artificial.
+            Profissional com trajetória iniciada na engenharia eletrônica e consolidada em tecnologia, atuando em desenvolvimento full
+            cycle, automação, DevOps e SRE para produtos web, APIs e projetos inovadores.
           </p>
           <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
             {SOCIAL_LINKS.map((link) => (
