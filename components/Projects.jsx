@@ -29,10 +29,10 @@ const Projects = () => {
 
   return (
     <div id='projects' ref={projectsRef} className='w-full'>
-      <div className='max-w-[1240px] mx-auto px-2 py-16'>
-        <p className='text-xl tracking-widest uppercase text-[#5651e5]'>Projetos</p>
+      <div className='max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 py-16'>
+        <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>Projetos</p>
         <h2 className='py-4'>Projetos em destaque</h2>
-        <div className='grid md:grid-cols-2 gap-8'>
+        <div className='grid sm:grid-cols-2 gap-6 sm:gap-8'>
           {PROJECTS.map((project) => (
             <ProjectItem key={project.title} {...project} />
           ))}

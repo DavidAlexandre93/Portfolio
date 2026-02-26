@@ -11,7 +11,7 @@ html {
 
 @layer base {
   body {
-    @apply bg-[#ecf0f3] text-[#1f2937] tracking-wide;
+    @apply bg-[#ecf0f3] text-[#1f2937] tracking-wide overflow-x-hidden;
     background-image: radial-gradient(circle at 15% 10%, rgba(86, 81, 229, 0.12), transparent 35%), radial-gradient(circle at 88% 24%, rgba(112, 157, 255, 0.18), transparent 32%);
     min-height: 100vh;
   }
@@ -26,11 +26,11 @@ html {
   }
 
   h1 {
-    @apply text-4xl sm:text-5xl md:text-6xl font-[Raleway];
+    @apply text-3xl sm:text-5xl md:text-6xl font-[Raleway] leading-tight;
   }
 
   h2 {
-    @apply text-3xl sm:text-4xl;
+    @apply text-2xl sm:text-4xl;
   }
 
   li {

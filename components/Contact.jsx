@@ -48,19 +48,19 @@ const Contact = () => {
   };
 
   return (
-    <div id='contact' ref={contactRef} className='w-full lg:h-screen'>
-      <div className='max-w-[1240px] m-auto px-2 py-16 w-full'>
-        <p className='text-xl tracking-widest uppercase text-[#5651e5]'>Contact</p>
+    <div id='contact' ref={contactRef} className='w-full'>
+      <div className='max-w-[1240px] m-auto px-4 sm:px-6 md:px-8 py-16 w-full'>
+        <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>Contact</p>
         <h2 className='py-4'>Entre em contato</h2>
-        <div className='grid lg:grid-cols-5 gap-8'>
-          <div className='contact-panel col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4'>
-            <div className='lg:p-4 h-full'>
+        <div className='grid lg:grid-cols-5 gap-6 sm:gap-8'>
+          <div className='contact-panel lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4 sm:p-6'>
+            <div className='h-full'>
               <Image className='rounded-xl' src={ContactImg} alt='Contact logo' />
-              <h2 className='py-2'>David Alexandre Fernandes</h2>
+              <h2 className='py-2 text-2xl sm:text-3xl'>David Alexandre Fernandes</h2>
               <p>Software Developer | DevOps | SRE</p>
               <p className='py-4'>Disponível para oportunidades e projetos. Vamos conversar.</p>
               <p className='uppercase pt-8'>Conecte-se comigo</p>
-              <div className='flex items-center justify-between py-4'>
+              <div className='flex flex-wrap items-center gap-3 py-4'>
                 {SOCIAL_LINKS.map((link) => (
                   <SocialIconLink key={link.label} {...link} />
                 ))}
@@ -68,8 +68,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className='contact-form col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4'>
-            <div className='p-4'>
+          <div className='contact-form lg:col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4'>
+            <div className='p-4 sm:p-6'>
               <form onSubmit={handleSubmit}>
                 <div className='grid md:grid-cols-2 gap-4 w-full py-2'>
                   <div className='flex flex-col'>
@@ -91,7 +91,7 @@ const Contact = () => {
                 </div>
                 <div className='flex flex-col py-2'>
                   <label className='uppercase text-sm py-2'>Mensagem</label>
-                  <textarea className='border-2 rounded-lg p-3 border-gray-300' rows='10' value={message} onChange={(e) => setMessage(e.target.value)} />
+                  <textarea className='border-2 rounded-lg p-3 border-gray-300 min-h-[170px]' rows='8' value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
                 <button className='w-full p-4 text-gray-100 mt-4'>Enviar mensagem</button>
               </form>
@@ -100,7 +100,9 @@ const Contact = () => {
         </div>
         <div className='flex justify-center py-12'>
           <Link href='/'>
-            <a className='rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300'><HiOutlineChevronDoubleUp className='text-[#5651e5]' size={30} /></a>
+            <a className='rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
+              <HiOutlineChevronDoubleUp className='text-[#5651e5]' size={30} />
+            </a>
           </Link>
         </div>
       </div>

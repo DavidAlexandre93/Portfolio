@@ -41,19 +41,19 @@ const Skills = () => {
   }, []);
 
   return (
-    <div id='skills' ref={sectionRef} className='w-full lg:h-screen p-2'>
+    <div id='skills' ref={sectionRef} className='w-full p-4 sm:p-6 md:p-8'>
       <div className='max-w-[1240px] mx-auto flex flex-col justify-center h-full'>
-        <p className='text-xl tracking-widest uppercase text-[#5651e5]'>Skills</p>
+        <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>Skills</p>
         <h2 className='py-4'>Tecnologias e competências</h2>
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-8'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8'>
           {SKILLS.map(({ title, icon }) => (
-            <div key={title} className='skill-card p-6 shadow-xl rounded-xl transition-transform'>
-              <div className='grid grid-cols-2 gap-4 justify-center items-center'>
+            <div key={title} className='skill-card p-4 sm:p-6 shadow-xl rounded-xl transition-transform'>
+              <div className='grid grid-cols-[auto,1fr] gap-3 sm:gap-4 justify-center items-center'>
                 <div className='m-auto'>
-                  <Image src={icon} width='64px' height='64px' alt={title} />
+                  <Image src={icon} width='48px' height='48px' alt={title} />
                 </div>
-                <div className='flex flex-col items-center justify-center'>
-                  <h3>{title}</h3>
+                <div className='flex flex-col items-start justify-center'>
+                  <h3 className='text-base sm:text-lg'>{title}</h3>
                 </div>
               </div>
             </div>

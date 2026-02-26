@@ -14,25 +14,25 @@ const resume = () => {
         <link rel='icon' href='/fav.png' />
       </Head>
 
-      <div className='max-w-[940px] mx-auto p-2 pt-[120px]'>
+      <div className='max-w-[940px] mx-auto px-4 sm:px-6 pt-[110px] pb-10'>
         <h2 className='text-center'>Resume</h2>
-        <div className='bg-[#d0d4d6] my-4 p-4 w-full flex justify-between items-center'>
-          <h2 className='text-center'>David Alexandre Fernandes</h2>
-          <div className='flex'>
+        <div className='bg-[#d0d4d6] my-4 p-4 sm:p-5 w-full flex flex-col sm:flex-row gap-4 justify-between sm:items-center'>
+          <h2 className='text-center sm:text-left text-2xl sm:text-3xl'>David Alexandre Fernandes</h2>
+          <div className='flex justify-center sm:justify-end gap-4'>
             <a href='https://www.linkedin.com/in/david-fernandes-08b005b4/' target='_blank' rel='noreferrer'>
-              <FaLinkedinIn size={20} style={{ marginRight: '1rem' }} />
+              <FaLinkedinIn size={20} />
             </a>
             <a href='https://github.com/DavidAlexandre93' target='_blank' rel='noreferrer'>
-              <FaGithub size={20} style={{ marginRight: '1rem' }} />
+              <FaGithub size={20} />
             </a>
           </div>
         </div>
 
-        <div className='text-center py-4 text-xl font-bold uppercase tracking-wider'>
+        <div className='text-center py-4 text-base sm:text-xl font-bold uppercase tracking-wider'>
           <div className='hidden sm:block'>
             <p>
-              Software Developer <span className='px-1'>|</span> DevOps <span className='px-1'>|</span> SRE{' '}
-              <span className='px-1'>|</span> Cloud Computing
+              Software Developer <span className='px-1'>|</span> DevOps <span className='px-1'>|</span> SRE <span className='px-1'>|</span>{' '}
+              Cloud Computing
             </p>
           </div>
           <div className='block sm:hidden'>
@@ -55,7 +55,7 @@ const resume = () => {
 
         <div className='text-center py-4'>
           <h5 className='text-center underline text-[18px] py-2'>Skills</h5>
-          <p className='py-2'>
+          <p className='py-2 leading-relaxed'>
             <span className='font-bold'>Stack Principal</span>
             <span className='px-2'>|</span>JavaScript
             <span className='px-2'>|</span>TypeScript
@@ -65,7 +65,7 @@ const resume = () => {
             <span className='px-2'>|</span>Python (FastAPI)
             <span className='px-2'>|</span>Go
           </p>
-          <p className='py-2'>
+          <p className='py-2 leading-relaxed'>
             <span className='font-bold'>Cloud & DevOps</span>
             <span className='px-2'>|</span>Docker
             <span className='px-2'>|</span>Kubernetes

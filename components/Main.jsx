@@ -27,22 +27,22 @@ const Main = () => {
 
   return (
     <div id='home' ref={heroRef} className='w-full min-h-screen text-center relative overflow-hidden'>
-      <div className='hero-orb-a absolute -top-20 -left-16 w-72 h-72 bg-violet-300/40 rounded-full blur-3xl' />
-      <div className='hero-orb-b absolute top-40 -right-20 w-80 h-80 bg-sky-300/40 rounded-full blur-3xl' />
-      <div className='hero-orb-c absolute bottom-10 left-[25%] w-56 h-56 bg-indigo-300/30 rounded-full blur-3xl' />
+      <div className='hero-orb-a absolute -top-28 -left-24 w-56 h-56 sm:w-72 sm:h-72 bg-violet-300/40 rounded-full blur-3xl' />
+      <div className='hero-orb-b absolute top-36 -right-24 w-64 h-64 sm:w-80 sm:h-80 bg-sky-300/40 rounded-full blur-3xl' />
+      <div className='hero-orb-c absolute bottom-8 left-[10%] sm:left-[25%] w-40 h-40 sm:w-56 sm:h-56 bg-indigo-300/30 rounded-full blur-3xl' />
 
-      <div className='max-w-[1240px] w-full min-h-screen mx-auto p-2 flex justify-center items-center'>
+      <div className='max-w-[1240px] w-full min-h-screen mx-auto px-4 sm:px-6 md:px-10 flex justify-center items-center pt-20 sm:pt-24'>
         <div className='backdrop-blur-[2px]'>
-          <p className='uppercase text-sm tracking-widest text-gray-600'>DESENVOLVENDO SOLUÇÕES DIGITAIS COM FOCO EM RESULTADO</p>
-          <h1 className='py-4 text-gray-700 hero-title'>
+          <p className='uppercase text-xs sm:text-sm tracking-[0.22em] text-gray-600'>DESENVOLVENDO SOLUÇÕES DIGITAIS COM FOCO EM RESULTADO</p>
+          <h1 className='py-4 text-gray-700 hero-title text-3xl sm:text-5xl'>
             Olá, eu sou <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
           </h1>
-          <h1 className='py-2 text-gray-700 hero-subtitle'>Software Developer | DevOps | SRE | Cloud | AI | Blockchain</h1>
-          <p className='hero-text py-4 text-gray-600 sm:max-w-[70%] m-auto'>
+          <h1 className='py-2 text-gray-700 hero-subtitle text-xl sm:text-3xl md:text-4xl'>Software Developer | DevOps | SRE | Cloud | AI | Blockchain</h1>
+          <p className='hero-text py-4 text-gray-600 max-w-3xl mx-auto text-sm sm:text-base md:text-lg'>
             Profissional com trajetória iniciada na engenharia eletrônica e consolidada em tecnologia, atuando em desenvolvimento full
             cycle, automação, DevOps e SRE para produtos web, APIs e projetos inovadores.
           </p>
-          <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
+          <div className='flex flex-wrap gap-4 items-center justify-center max-w-[420px] m-auto py-4'>
             {SOCIAL_LINKS.map((link) => (
               <div key={link.label} className='social-card'>
                 <SocialIconLink {...link} />
