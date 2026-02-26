@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const baseClasses = 'rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer';
+const baseClasses = 'rounded-full shadow-lg shadow-gray-400 p-4 sm:p-5 cursor-pointer';
 
 const SocialIconLink = ({ href, icon: Icon, label, external = false, onClick, compact = false }) => {
   const handleMouse = (event, hovering) => {
@@ -18,7 +18,7 @@ const SocialIconLink = ({ href, icon: Icon, label, external = false, onClick, co
       onClick={onClick}
       onMouseEnter={(event) => handleMouse(event, true)}
       onMouseLeave={(event) => handleMouse(event, false)}
-      className={compact ? baseClasses.replace('p-6', 'p-3') : baseClasses}
+      className={compact ? baseClasses.replace('sm:p-5', 'p-3').replace('p-4', 'p-3') : baseClasses}
     >
       <Icon />
     </div>

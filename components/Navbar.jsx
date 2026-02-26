@@ -28,38 +28,54 @@ const Navbar = () => {
 
   return (
     <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100] bg-[#ecf0f3]/90 backdrop-blur-md ease-in-out duration-300' : 'fixed w-full h-20 z-[100] bg-transparent'}>
-      <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
-        <Link href='/'><a><Image src={NavLogo} alt='Logo' width='125' height='50' className='cursor-pointer' /></a></Link>
+      <div className='flex justify-between items-center w-full h-full px-4 sm:px-6 lg:px-12 2xl:px-16'>
+        <Link href='/'>
+          <a>
+            <Image src={NavLogo} alt='Logo' width='125' height='50' className='cursor-pointer' />
+          </a>
+        </Link>
 
         <div>
-          <ul className='desktop-nav hidden md:flex text-[#1f2937]'>
+          <ul className='desktop-nav hidden lg:flex text-[#1f2937]'>
             {NAV_LINKS.map((item) => (
-              <li key={item.label} className='ml-10 text-sm uppercase hover:border-b'>
+              <li key={item.label} className='ml-8 text-xs xl:text-sm uppercase hover:border-b'>
                 <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>
-          <div onClick={() => setNav(!nav)} className='md:hidden'><AiOutlineMenu size={25} /></div>
+          <button type='button' aria-label='Abrir menu' onClick={() => setNav(!nav)} className='lg:hidden p-2 rounded-md'>
+            <AiOutlineMenu size={24} />
+          </button>
         </div>
       </div>
 
-      <div className={nav ? 'md:hidden fixed left-0 top-0 w-full h-screen bg-black/70' : ''}>
-        <div className={nav ? 'mobile-menu fixed left-0 top-0 w-[75%] sm:w-[60%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500' : 'mobile-menu fixed left-[-100%] top-0 p-10 ease-in duration-500'}>
+      <div className={nav ? 'lg:hidden fixed inset-0 bg-black/70' : 'pointer-events-none'}>
+        <div className={nav ? 'mobile-menu fixed left-0 top-0 w-[84%] max-w-[340px] h-screen bg-[#ecf0f3] p-6 sm:p-8 ease-in duration-500 pointer-events-auto' : 'mobile-menu fixed left-[-100%] top-0 p-8 ease-in duration-500'}>
           <div className='flex w-full items-center justify-between'>
-            <Link href='/'><a><Image src={NavLogo} width='87' height='35' alt='Logo' /></a></Link>
-            <div onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'><AiOutlineClose /></div>
+            <Link href='/'>
+              <a>
+                <Image src={NavLogo} width='87' height='35' alt='Logo' />
+              </a>
+            </Link>
+            <button type='button' aria-label='Fechar menu' onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'>
+              <AiOutlineClose />
+            </button>
           </div>
-          <div className='border-b border-gray-300 my-4'><p className='w-[85%] py-4'>Let&#39;s build something legendary together</p></div>
+          <div className='border-b border-gray-300 my-4'>
+            <p className='w-full py-4 text-sm sm:text-base'>Let&#39;s build something legendary together</p>
+          </div>
           <ul className='uppercase'>
             {NAV_LINKS.map((item) => (
               <Link key={item.label} href={item.href}>
-                <li onClick={() => setNav(false)} className='py-4 text-sm'>{item.label}</li>
+                <li onClick={() => setNav(false)} className='py-3 text-sm'>
+                  {item.label}
+                </li>
               </Link>
             ))}
           </ul>
-          <div className='pt-12'>
-            <p className='uppercase tracking-widest text-[#5651e5]'>Let&#39;s Connect</p>
-            <div className='flex items-center justify-between my-4 w-full sm:w-[80%]'>
+          <div className='pt-10'>
+            <p className='uppercase tracking-widest text-[#5651e5] text-sm'>Let&#39;s Connect</p>
+            <div className='flex flex-wrap items-center gap-3 my-4'>
               {SOCIAL_LINKS.map((link) => (
                 <SocialIconLink key={link.label} {...link} onClick={() => setNav(false)} compact />
               ))}

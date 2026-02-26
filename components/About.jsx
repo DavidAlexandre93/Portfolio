@@ -45,11 +45,11 @@ const About = () => {
   }, []);
 
   return (
-    <div id='about' ref={aboutRef} className='w-full md:h-screen p-2 flex items-center py-16'>
-      <div className='max-w-[1240px] m-auto md:grid grid-cols-3 gap-8'>
+    <div id='about' ref={aboutRef} className='w-full p-4 sm:p-6 md:p-8 flex items-center py-16 md:py-24'>
+      <div className='max-w-[1240px] w-full m-auto grid md:grid-cols-3 gap-10 md:gap-8 items-center'>
         <div className='col-span-2'>
-          <p className='about-reveal uppercase text-xl tracking-widest text-[#5651e5]'>Sobre</p>
-          <h2 className='about-reveal py-4'>Quem Sou</h2>
+          <p className='about-reveal uppercase text-lg sm:text-xl tracking-widest text-[#5651e5]'>Sobre</p>
+          <h2 className='about-reveal py-3 sm:py-4'>Quem Sou</h2>
           <p className='about-reveal py-2 text-gray-600'>/ / Desenvolvedor focado em entrega de valor real para o negócio.</p>
           <p className='about-reveal py-2 text-gray-600'>
             Natural de Mato Grosso e residente na região metropolitana de São Paulo, com formação técnica em eletrônica e desenvolvimento
@@ -63,13 +63,8 @@ const About = () => {
             <p className='about-reveal py-2 text-gray-600 underline cursor-pointer'>Veja alguns dos meus projetos mais recentes no GitHub.</p>
           </Link>
         </div>
-        <div className='about-reveal about-image-card w-full h-auto m-auto flex items-center justify-center hover:scale-105 ease-in duration-300'>
-          <Image
-            src={AboutImg}
-            className='w-[760px] md:w-[980px] lg:w-[1200px] max-w-none h-auto object-contain'
-            priority
-            alt='Foto de perfil David Alexandre Fernandes'
-          />
+        <div className='about-reveal about-image-card w-full max-w-[420px] md:max-w-full h-auto m-auto flex items-center justify-center hover:scale-105 ease-in duration-300'>
+          <Image src={AboutImg} className='w-full h-auto object-contain' priority alt='Foto de perfil David Alexandre Fernandes' />
         </div>
       </div>
     </div>
