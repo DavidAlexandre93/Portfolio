@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
+import { useI18n } from '../context/I18nContext';
 import { SKILLS } from '../data/siteData';
 
 const Skills = () => {
   const sectionRef = useRef(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (typeof window === 'undefined' || !sectionRef.current || !window.gsap) return;
@@ -43,8 +45,8 @@ const Skills = () => {
   return (
     <div id='skills' ref={sectionRef} className='w-full p-4 sm:p-6 md:p-8'>
       <div className='max-w-[1240px] mx-auto flex flex-col justify-center h-full'>
-        <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>Skills</p>
-        <h2 className='py-4'>Tecnologias e competências</h2>
+        <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>{t('nav.skills')}</p>
+        <h2 className='py-4'>{t('skills.subtitle')}</h2>
         <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8'>
           {SKILLS.map(({ title, icon }) => (
             <div key={title} className='skill-card p-4 sm:p-6 shadow-xl rounded-xl transition-transform'>

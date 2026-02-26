@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { SOCIAL_LINKS } from '../data/siteData';
+import { useI18n } from '../context/I18nContext';
 import SocialIconLink from './shared/SocialIconLink';
 
 const Main = () => {
   const heroRef = useRef(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (typeof window === 'undefined' || !heroRef.current || !window.gsap) return;
@@ -33,19 +35,16 @@ const Main = () => {
 
       <div className='max-w-[1240px] w-full min-h-screen mx-auto px-4 sm:px-6 md:px-10 flex justify-center items-center pt-20 sm:pt-24'>
         <div className='backdrop-blur-[2px]'>
-          <p className='uppercase text-xs sm:text-sm tracking-[0.22em] text-gray-600'>DESENVOLVENDO SOLUÇÕES DIGITAIS COM FOCO EM RESULTADO</p>
+          <p className='uppercase text-xs sm:text-sm tracking-[0.22em] text-gray-600'>{t('hero.tagline')}</p>
           <h1 className='py-4 text-gray-700 hero-title text-3xl sm:text-5xl'>
-            Olá, eu sou <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
+            {t('hero.greeting')} <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
           </h1>
           <h1 className='py-2 text-gray-700 hero-subtitle text-xl sm:text-3xl md:text-4xl'>Software Developer | DevOps | SRE | Cloud | AI | Blockchain</h1>
-          <p className='hero-text py-4 text-gray-600 max-w-3xl mx-auto text-sm sm:text-base md:text-lg'>
-            Profissional com trajetória iniciada na engenharia eletrônica e consolidada em tecnologia, atuando em desenvolvimento full
-            cycle, automação, DevOps e SRE para produtos web, APIs e projetos inovadores.
-          </p>
+          <p className='hero-text py-4 text-gray-600 max-w-3xl mx-auto text-sm sm:text-base md:text-lg'>{t('hero.summary')}</p>
           <div className='flex flex-wrap gap-4 items-center justify-center max-w-[420px] m-auto py-4'>
             {SOCIAL_LINKS.map((link) => (
-              <div key={link.label} className='social-card'>
-                <SocialIconLink {...link} />
+              <div key={link.key} className='social-card'>
+                <SocialIconLink {...link} label={t(link.key)} />
               </div>
             ))}
           </div>

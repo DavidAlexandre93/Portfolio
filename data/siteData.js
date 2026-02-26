@@ -21,19 +21,19 @@ import Typescript from '../public/assets/skills/typescript.svg';
 import ProjectsCover from '../public/assets/projects/logoprojects.svg';
 
 export const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Sobre', href: '/#about' },
-  { label: 'Skills', href: '/#skills' },
-  { label: 'Projetos', href: '/#projects' },
-  { label: 'Currículo', href: '/resume' },
-  { label: 'Contato', href: '/#contact' },
+  { key: 'nav.home', href: '/' },
+  { key: 'nav.about', href: '/#about' },
+  { key: 'nav.skills', href: '/#skills' },
+  { key: 'nav.projects', href: '/#projects' },
+  { key: 'nav.resume', href: '/resume' },
+  { key: 'nav.contact', href: '/#contact' },
 ];
 
 export const SOCIAL_LINKS = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/david-fernandes-08b005b4/', icon: FaLinkedinIn, external: true },
-  { label: 'GitHub', href: 'https://github.com/DavidAlexandre93', icon: FaGithub, external: true },
-  { label: 'Calendly', href: 'https://calendly.com/davidalexandrefernandes', icon: AiOutlineMail, external: true },
-  { label: 'Currículo', href: '/resume', icon: BsFillPersonLinesFill, external: false },
+  { key: 'LinkedIn', href: 'https://www.linkedin.com/in/david-fernandes-08b005b4/', icon: FaLinkedinIn, external: true },
+  { key: 'GitHub', href: 'https://github.com/DavidAlexandre93', icon: FaGithub, external: true },
+  { key: 'Calendly', href: 'https://calendly.com/davidalexandrefernandes', icon: AiOutlineMail, external: true },
+  { key: 'nav.resume', href: '/resume', icon: BsFillPersonLinesFill, external: false },
 ];
 
 export const SKILLS = [

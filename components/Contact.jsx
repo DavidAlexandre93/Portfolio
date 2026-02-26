@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import { useI18n } from '../context/I18nContext';
 import { SOCIAL_LINKS } from '../data/siteData';
 import ContactImg from '../public/assets/navLogo.svg';
 import SocialIconLink from './shared/SocialIconLink';
@@ -13,6 +14,7 @@ const Contact = () => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const contactRef = useRef(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (typeof window === 'undefined' || !contactRef.current || !window.gsap) return;
@@ -50,19 +52,19 @@ const Contact = () => {
   return (
     <div id='contact' ref={contactRef} className='w-full'>
       <div className='max-w-[1240px] m-auto px-4 sm:px-6 md:px-8 py-16 w-full'>
-        <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>Contact</p>
-        <h2 className='py-4'>Entre em contato</h2>
+        <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>{t('contact.title')}</p>
+        <h2 className='py-4'>{t('contact.subtitle')}</h2>
         <div className='grid lg:grid-cols-5 gap-6 sm:gap-8'>
           <div className='contact-panel lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4 sm:p-6'>
             <div className='h-full'>
               <Image className='rounded-xl' src={ContactImg} alt='Contact logo' />
               <h2 className='py-2 text-2xl sm:text-3xl'>David Alexandre Fernandes</h2>
               <p>Software Developer | DevOps | SRE</p>
-              <p className='py-4'>Disponível para oportunidades e projetos. Vamos conversar.</p>
-              <p className='uppercase pt-8'>Conecte-se comigo</p>
+              <p className='py-4'>{t('contact.available')}</p>
+              <p className='uppercase pt-8'>{t('contact.connectMe')}</p>
               <div className='flex flex-wrap items-center gap-3 py-4'>
                 {SOCIAL_LINKS.map((link) => (
-                  <SocialIconLink key={link.label} {...link} />
+                  <SocialIconLink key={link.key} {...link} label={t(link.key)} />
                 ))}
               </div>
             </div>
@@ -73,27 +75,27 @@ const Contact = () => {
               <form onSubmit={handleSubmit}>
                 <div className='grid md:grid-cols-2 gap-4 w-full py-2'>
                   <div className='flex flex-col'>
-                    <label className='uppercase text-sm py-2'>Nome</label>
+                    <label className='uppercase text-sm py-2'>{t('contact.name')}</label>
                     <input className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
                   <div className='flex flex-col'>
-                    <label className='uppercase text-sm py-2'>Telefone</label>
+                    <label className='uppercase text-sm py-2'>{t('contact.phone')}</label>
                     <input className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={phone} onChange={(e) => setPhone(e.target.value)} />
                   </div>
                 </div>
                 <div className='flex flex-col py-2'>
-                  <label className='uppercase text-sm py-2'>Email</label>
+                  <label className='uppercase text-sm py-2'>{t('contact.email')}</label>
                   <input className='border-2 rounded-lg p-3 flex border-gray-300' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className='flex flex-col py-2'>
-                  <label className='uppercase text-sm py-2'>Assunto</label>
+                  <label className='uppercase text-sm py-2'>{t('contact.subject')}</label>
                   <input className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={subject} onChange={(e) => setSubject(e.target.value)} />
                 </div>
                 <div className='flex flex-col py-2'>
-                  <label className='uppercase text-sm py-2'>Mensagem</label>
+                  <label className='uppercase text-sm py-2'>{t('contact.message')}</label>
                   <textarea className='border-2 rounded-lg p-3 border-gray-300 min-h-[170px]' rows='8' value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
-                <button className='w-full p-4 text-gray-100 mt-4'>Enviar mensagem</button>
+                <button className='w-full p-4 text-gray-100 mt-4'>{t('contact.send')}</button>
               </form>
             </div>
           </div>
