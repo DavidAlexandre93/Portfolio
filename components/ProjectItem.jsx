@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
+import { useI18n } from '../context/I18nContext';
 
 const ProjectItem = ({ title, backgroundImg, tech, projectUrl }) => {
   const cardRef = useRef(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (!cardRef.current || !window.gsap) return;
@@ -31,7 +33,7 @@ const ProjectItem = ({ title, backgroundImg, tech, projectUrl }) => {
         <h3 className='text-xl sm:text-2xl text-white tracking-wider'>{title}</h3>
         <p className='pb-4 pt-2 text-white text-sm sm:text-base'>{tech}</p>
         <Link href={projectUrl}>
-          <p className='text-center py-2 sm:py-3 rounded-lg bg-white text-gray-700 font-bold text-sm sm:text-base cursor-pointer px-4'>More Info</p>
+          <p className='text-center py-2 sm:py-3 rounded-lg bg-white text-gray-700 font-bold text-sm sm:text-base cursor-pointer px-4'>{t('common.moreInfo')}</p>
         </Link>
       </div>
     </div>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { useI18n } from '../context/I18nContext';
 import { NAV_LINKS, SOCIAL_LINKS } from '../data/siteData';
 import NavLogo from '../public/assets/navLogo.svg';
 import SocialIconLink from './shared/SocialIconLink';
@@ -9,6 +10,7 @@ import SocialIconLink from './shared/SocialIconLink';
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     const handleShadow = () => setShadow(window.scrollY >= 90);
@@ -38,12 +40,12 @@ const Navbar = () => {
         <div>
           <ul className='desktop-nav hidden lg:flex text-[#1f2937]'>
             {NAV_LINKS.map((item) => (
-              <li key={item.label} className='ml-8 text-xs xl:text-sm uppercase hover:border-b'>
-                <Link href={item.href}>{item.label}</Link>
+              <li key={item.key} className='ml-8 text-xs xl:text-sm uppercase hover:border-b'>
+                <Link href={item.href}>{t(item.key)}</Link>
               </li>
             ))}
           </ul>
-          <button type='button' aria-label='Abrir menu' onClick={() => setNav(!nav)} className='lg:hidden p-2 rounded-md'>
+          <button type='button' aria-label={t('menu.open')} onClick={() => setNav(!nav)} className='lg:hidden p-2 rounded-md'>
             <AiOutlineMenu size={24} />
           </button>
         </div>
@@ -57,27 +59,27 @@ const Navbar = () => {
                 <Image src={NavLogo} width='87' height='35' alt='Logo' />
               </a>
             </Link>
-            <button type='button' aria-label='Fechar menu' onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'>
+            <button type='button' aria-label={t('menu.close')} onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'>
               <AiOutlineClose />
             </button>
           </div>
           <div className='border-b border-gray-300 my-4'>
-            <p className='w-full py-4 text-sm sm:text-base'>Let&#39;s build something legendary together</p>
+            <p className='w-full py-4 text-sm sm:text-base'>{t('menu.legendary')}</p>
           </div>
           <ul className='uppercase'>
             {NAV_LINKS.map((item) => (
-              <Link key={item.label} href={item.href}>
+              <Link key={item.key} href={item.href}>
                 <li onClick={() => setNav(false)} className='py-3 text-sm'>
-                  {item.label}
+                  {t(item.key)}
                 </li>
               </Link>
             ))}
           </ul>
           <div className='pt-10'>
-            <p className='uppercase tracking-widest text-[#5651e5] text-sm'>Let&#39;s Connect</p>
+            <p className='uppercase tracking-widest text-[#5651e5] text-sm'>{t('common.connect')}</p>
             <div className='flex flex-wrap items-center gap-3 my-4'>
               {SOCIAL_LINKS.map((link) => (
-                <SocialIconLink key={link.label} {...link} onClick={() => setNav(false)} compact />
+                <SocialIconLink key={link.key} {...link} label={t(link.key)} onClick={() => setNav(false)} compact />
               ))}
             </div>
           </div>
