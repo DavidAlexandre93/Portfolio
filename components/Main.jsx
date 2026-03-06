@@ -8,7 +8,7 @@ const Main = () => {
   const { t } = useI18n();
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !heroRef.current || !window.gsap) return;
+    if (typeof window === 'undefined' || !heroRef.current || !window.gsap) return undefined;
 
     const hero = heroRef.current;
     const cards = hero.querySelectorAll('.social-card');
@@ -22,9 +22,16 @@ const Main = () => {
       .fromTo(text, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5')
       .fromTo(cards, { y: 18, opacity: 0, scale: 0.92 }, { y: 0, opacity: 1, scale: 1, duration: 0.45, stagger: 0.12 }, '-=0.4');
 
-    window.gsap.to('.hero-orb-a', { x: 35, y: -16, scale: 1.07, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    window.gsap.to('.hero-orb-b', { x: -28, y: 22, scale: 1.08, duration: 6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    window.gsap.to('.hero-orb-c', { x: 18, y: -22, scale: 1.1, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    const orbATween = window.gsap.to('.hero-orb-a', { x: 35, y: -16, scale: 1.07, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    const orbBTween = window.gsap.to('.hero-orb-b', { x: -28, y: 22, scale: 1.08, duration: 6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    const orbCTween = window.gsap.to('.hero-orb-c', { x: 18, y: -22, scale: 1.1, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    return () => {
+      tl.kill();
+      orbATween.kill();
+      orbBTween.kill();
+      orbCTween.kill();
+    };
   }, []);
 
   return (

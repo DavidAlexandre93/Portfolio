@@ -8,7 +8,7 @@ const Skills = () => {
   const { t } = useI18n();
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !sectionRef.current || !window.gsap) return;
+    if (typeof window === 'undefined' || !sectionRef.current || !window.gsap) return undefined;
     const { gsap, ScrollTrigger } = window;
     if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
@@ -28,18 +28,30 @@ const Skills = () => {
     }, sectionRef);
 
     const cards = sectionRef.current.querySelectorAll('.skill-card');
+    const listeners = [];
+
     cards.forEach((card) => {
-      card.addEventListener('mouseenter', () => {
+      const onEnter = () => {
         if (!window.Motion?.animate) return;
         window.Motion.animate(card, { transform: ['translateY(0px)', 'translateY(-8px) scale(1.03)'] }, { duration: 0.22, fill: 'forwards' });
-      });
-      card.addEventListener('mouseleave', () => {
+      };
+      const onLeave = () => {
         if (!window.Motion?.animate) return;
         window.Motion.animate(card, { transform: ['translateY(-8px) scale(1.03)', 'translateY(0px) scale(1)'] }, { duration: 0.22, fill: 'forwards' });
-      });
+      };
+
+      card.addEventListener('mouseenter', onEnter);
+      card.addEventListener('mouseleave', onLeave);
+      listeners.push({ card, onEnter, onLeave });
     });
 
-    return () => ctx.revert();
+    return () => {
+      listeners.forEach(({ card, onEnter, onLeave }) => {
+        card.removeEventListener('mouseenter', onEnter);
+        card.removeEventListener('mouseleave', onLeave);
+      });
+      ctx.revert();
+    };
   }, []);
 
   return (
