@@ -38,3 +38,36 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Baseline e observabilidade de performance
+
+Este projeto é majoritariamente frontend estático. Portanto, as melhorias de performance e estabilidade focam em:
+
+- **Latência de página (Core Web Vitals):** monitoramento de LCP/CLS/INP/FCP/TTFB em produção via `reportWebVitals`.
+- **Taxa de erro:** logging estruturado no endpoint `/api/vitals` para capturar amostras de degradação por navegação.
+- **Throughput/CPU/RAM/DB:** não há backend stateful com banco neste repositório; essas métricas devem ser medidas no ambiente de hospedagem (Vercel/infra) e não localmente.
+- **Tempo de build:** medido localmente com `yarn build` + script Python para registrar duração e memória de pico.
+
+### Métricas-alvo sugeridas (produção)
+
+- p95 LCP < **2.5s**
+- p95 INP < **200ms**
+- p99 CLS < **0.1**
+- erro de navegação (JS/runtime + 5xx API) < **1%**
+
+### Como medir baseline local
+
+```bash
+python - <<'PY'
+import subprocess,time,resource
+start=time.time()
+proc=subprocess.run(['yarn','build'],capture_output=True,text=True)
+end=time.time()
+usage=resource.getrusage(resource.RUSAGE_CHILDREN)
+print(proc.stdout)
+print(proc.stderr)
+print(f'build_time_seconds={end-start:.2f}')
+print(f'max_rss_kb={usage.ru_maxrss}')
+raise SystemExit(proc.returncode)
+PY
+```
