@@ -1,3 +1,4 @@
+import React from 'react';
 import ProjectDetailPage from '../components/ProjectDetailPage';
 import { getProjectDetail } from '../data/projectDetails';
 
