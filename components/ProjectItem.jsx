@@ -29,7 +29,7 @@ const ProjectItem = ({ title, backgroundImg, tech, projectUrl }) => {
       className='project-card relative flex items-center justify-center h-auto w-full shadow-xl shadow-gray-400 rounded-xl group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff] transition-colors duration-300 overflow-hidden'
     >
       <Image className='rounded-xl group-hover:opacity-10 transition-opacity duration-300' src={backgroundImg} alt={title} />
-      <div className='absolute inset-0 flex flex-col items-center justify-center px-4 text-center bg-[#5651e5]/80 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300'>
+      <div className='absolute inset-0 flex flex-col items-center justify-center px-4 text-center bg-[#5651e5]/80 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100 transition-opacity duration-300'>
         <h3 className='text-xl sm:text-2xl text-white tracking-wider'>{title}</h3>
         <p className='pb-4 pt-2 text-white text-sm sm:text-base'>{tech}</p>
         <Link href={projectUrl}>
