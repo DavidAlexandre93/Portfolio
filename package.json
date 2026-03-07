@@ -43,7 +43,7 @@
     "micromatch": "4.0.8",
     "minimatch": "9.0.5",
     "nanoid": "3.3.8",
-    "postcss": "8.4.31",
+    "postcss": "$postcss",
     "protobufjs": "6.11.4",
     "semver": "7.5.2",
     "tmp": "0.2.4",
