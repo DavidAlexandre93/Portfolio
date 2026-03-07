@@ -39,11 +39,17 @@ const App = () => (
 
 const AppShell = () => {
   const [booting, setBooting] = useState(true);
+  const { path } = useRouter();
 
   useEffect(() => {
     const timeout = window.setTimeout(() => setBooting(false), 1400);
     return () => window.clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || booting || !window.gsap) return;
+    window.gsap.fromTo('.route-shell', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' });
+  }, [path, booting]);
 
   return (
     <>
@@ -52,7 +58,9 @@ const AppShell = () => {
       </div>
       <div className={`app-shell ${booting ? 'app-shell--hidden' : 'app-shell--visible'}`}>
         <Navbar />
-        <RouteContent />
+        <main key={path} className='route-shell'>
+          <RouteContent />
+        </main>
       </div>
     </>
   );
