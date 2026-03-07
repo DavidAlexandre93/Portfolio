@@ -13,15 +13,19 @@ import '../styles/globals.css';
 
 const RouteContent = () => {
   const { path } = useRouter();
-  const pathname = path.split('#')[0];
+  const pathname = path.split('#')[0].replace(/\/index\.html$/i, '') || '/';
 
-  if (pathname === '/') return <Home />;
-  if (pathname === '/resume') return <Resume />;
-  if (pathname === '/crypto') return <Crypto />;
-  if (pathname === '/netflix') return <Netflix />;
-  if (pathname === '/property') return <Property />;
-  if (pathname === '/twitch') return <Twitch />;
+  if (pathname === '/' || pathname === '') return <Home />;
+
+  if (pathname === '/resume' || pathname.endsWith('/resume')) return <Resume />;
+  if (pathname === '/crypto' || pathname.endsWith('/crypto')) return <Crypto />;
+  if (pathname === '/netflix' || pathname.endsWith('/netflix')) return <Netflix />;
+  if (pathname === '/property' || pathname.endsWith('/property')) return <Property />;
+  if (pathname === '/twitch' || pathname.endsWith('/twitch')) return <Twitch />;
   if (pathname === '/404') return <NotFoundPage />;
+
+  if (!pathname.includes('/')) return <Home />;
+
   return <NotFoundPage />;
 };
 
