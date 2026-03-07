@@ -57,8 +57,8 @@ const Navbar = () => {
     <header className={navClassName}>
       <div className='navbar-progress' style={{ transform: `scaleX(${scrollProgress / 100})` }} aria-hidden='true' />
       <div className='flex justify-between items-center w-full h-full px-4 sm:px-6 lg:px-12 2xl:px-16'>
-        <Link to='/'>
-          <img src='/assets/navLogo.svg' alt='Logo' width='125' height='50' className='mt-1 cursor-pointer transition-transform duration-300 hover:scale-[1.03]' />
+        <Link to='/' aria-label={t('nav.home')} className='sr-only'>
+          {t('nav.home')}
         </Link>
 
         <div>
