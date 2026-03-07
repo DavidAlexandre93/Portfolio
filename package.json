@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --test __tests__/**/*.test.cjs",
+    "test:coverage": "node --test --experimental-test-coverage __tests__/**/*.test.cjs",
+    "format": "node .github/scripts/format-check.mjs",
+    "format:check": "node .github/scripts/format-check.mjs"
   },
   "dependencies": {
     "firebase": "^9.8.3",

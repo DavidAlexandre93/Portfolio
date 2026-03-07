@@ -71,3 +71,32 @@ print(f'max_rss_kb={usage.ru_maxrss}')
 raise SystemExit(proc.returncode)
 PY
 ```
+
+## Pipeline de CI/CD (Frontend)
+
+O workflow completo está em `.github/workflows/frontend-ci-cd.yml` e cobre:
+
+- instalação determinística de dependências com `yarn install --immutable`;
+- lint e validação de formatação;
+- testes unitários (`node --test`) e testes de cobertura (`--experimental-test-coverage`);
+- validação de build (`yarn build`);
+- análise de vulnerabilidades com `yarn npm audit` e Trivy;
+- geração e upload de artefatos (`coverage` e build `.next`);
+- deploy automatizado por ambiente (development, staging, production) via Vercel.
+
+### Estratégia de promoção para produção
+
+- `develop` → deploy automático em `development`.
+- `main` → deploy automático em `staging`.
+- `tag` semântica `vX.Y.Z` → promoção + deploy em `production`.
+
+A promoção para produção depende do sucesso dos quality gates e da análise de vulnerabilidades.
+Além disso, recomenda-se configurar **GitHub Environments** com aprovação obrigatória para o ambiente `production`.
+
+### Segredos necessários
+
+Configure os segredos nos ambientes/repositório do GitHub:
+
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
