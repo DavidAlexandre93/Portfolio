@@ -108,3 +108,130 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+
+.route-shell {
+  min-height: 100vh;
+}
+
+.navbar-progress {
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, #5651e5, #709dff);
+  transition: transform 0.15s linear;
+}
+
+.nav-link-item {
+  position: relative;
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5651e5, #709dff);
+  transition: transform 0.25s ease;
+}
+
+.nav-link-item:hover::after {
+  transform: scaleX(1);
+}
+
+.hero-action-chip {
+  border: 1px solid rgba(86, 81, 229, 0.2);
+  background: rgba(255, 255, 255, 0.76);
+  color: #3b3c66;
+  border-radius: 999px;
+  padding: 0.52rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.hero-action-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -18px rgba(86, 81, 229, 0.75);
+}
+
+.hero-action-chip--ghost {
+  background: rgba(86, 81, 229, 0.08);
+}
+
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  width: 22px;
+  height: 38px;
+  border: 2px solid rgba(86, 81, 229, 0.45);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+}
+
+.hero-scroll-cue__dot {
+  width: 4px;
+  height: 9px;
+  border-radius: 999px;
+  background: #5651e5;
+  animation: cue-float 1.7s ease-in-out infinite;
+}
+
+@keyframes cue-float {
+  0%,
+  100% {
+    transform: translateY(-5px);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(5px);
+    opacity: 0.35;
+  }
+}
+
+.project-card--interactive {
+  --card-rotate-x: 0deg;
+  --card-rotate-y: 0deg;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  transform: perspective(1000px) rotateX(var(--card-rotate-x)) rotateY(var(--card-rotate-y));
+  transition: transform 0.16s ease, box-shadow 0.28s ease;
+}
+
+.project-card--interactive::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.24s ease;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.34), transparent 42%);
+}
+
+.project-card--interactive:hover::before {
+  opacity: 1;
+}
+
+.contact-form input,
+.contact-form textarea {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(86, 81, 229, 0.55);
+  box-shadow: 0 0 0 4px rgba(86, 81, 229, 0.12);
+  transform: translateY(-1px);
+  outline: none;
+}
