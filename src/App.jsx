@@ -1,13 +1,13 @@
 import React from 'react';
 import { Navbar } from '../components';
 import { I18nProvider } from '../context/I18nContext';
-import Home from '../pages/index';
+import Home from '../pages/index.jsx';
 import Resume from '../pages/resume';
 import Crypto from '../pages/crypto';
 import Netflix from '../pages/netflix';
 import Property from '../pages/property';
 import Twitch from '../pages/twitch';
-import NotFoundPage from '../pages/404';
+import NotFoundPage from '../pages/404.jsx';
 import { RouterProvider, useRouter } from './router';
 import '../styles/globals.css';
 
