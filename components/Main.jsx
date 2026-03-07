@@ -1,11 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SOCIAL_LINKS } from '../data/siteData';
 import { useI18n } from '../context/I18nContext';
 import SocialIconLink from './shared/SocialIconLink';
 
 const Main = () => {
   const heroRef = useRef(null);
+  const pointerRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
   const { t } = useI18n();
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsReady(true), 300);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !heroRef.current || !window.gsap) return undefined;
@@ -34,14 +42,54 @@ const Main = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window === 'undefined' || !heroRef.current) return undefined;
+    const hero = heroRef.current;
+
+    const updateParallax = () => {
+      rafRef.current = null;
+      const layers = hero.querySelectorAll('[data-parallax]');
+      layers.forEach((layer) => {
+        const speed = Number(layer.getAttribute('data-parallax') || 0);
+        const x = pointerRef.current.x * speed;
+        const y = pointerRef.current.y * speed;
+        layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+    };
+
+    const onMove = (event) => {
+      const rect = hero.getBoundingClientRect();
+      pointerRef.current = {
+        x: (event.clientX - rect.left - rect.width / 2) / 45,
+        y: (event.clientY - rect.top - rect.height / 2) / 45,
+      };
+
+      if (!rafRef.current) rafRef.current = window.requestAnimationFrame(updateParallax);
+    };
+
+    const onLeave = () => {
+      pointerRef.current = { x: 0, y: 0 };
+      if (!rafRef.current) rafRef.current = window.requestAnimationFrame(updateParallax);
+    };
+
+    hero.addEventListener('mousemove', onMove);
+    hero.addEventListener('mouseleave', onLeave);
+
+    return () => {
+      hero.removeEventListener('mousemove', onMove);
+      hero.removeEventListener('mouseleave', onLeave);
+      if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
   return (
     <div id='home' ref={heroRef} className='w-full min-h-screen text-center relative overflow-hidden'>
-      <div className='hero-orb-a absolute -top-28 -left-24 w-56 h-56 sm:w-72 sm:h-72 bg-violet-300/40 rounded-full blur-3xl' />
-      <div className='hero-orb-b absolute top-36 -right-24 w-64 h-64 sm:w-80 sm:h-80 bg-sky-300/40 rounded-full blur-3xl' />
-      <div className='hero-orb-c absolute bottom-8 left-[10%] sm:left-[25%] w-40 h-40 sm:w-56 sm:h-56 bg-indigo-300/30 rounded-full blur-3xl' />
+      <div data-parallax='0.8' className='hero-orb-a absolute -top-28 -left-24 w-56 h-56 sm:w-72 sm:h-72 bg-violet-300/40 rounded-full blur-3xl will-change-transform' />
+      <div data-parallax='-1' className='hero-orb-b absolute top-36 -right-24 w-64 h-64 sm:w-80 sm:h-80 bg-sky-300/40 rounded-full blur-3xl will-change-transform' />
+      <div data-parallax='0.5' className='hero-orb-c absolute bottom-8 left-[10%] sm:left-[25%] w-40 h-40 sm:w-56 sm:h-56 bg-indigo-300/30 rounded-full blur-3xl will-change-transform' />
 
       <div className='max-w-[1240px] w-full min-h-screen mx-auto px-4 sm:px-6 md:px-10 flex justify-center items-center pt-20 sm:pt-24'>
-        <div className='backdrop-blur-[2px]'>
+        <div className={`backdrop-blur-[2px] transition-all duration-700 ${isReady ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.985]'}`}>
           <p className='uppercase text-xs sm:text-sm tracking-[0.22em] text-gray-600'>{t('hero.tagline')}</p>
           <h1 className='py-4 text-gray-700 hero-title text-3xl sm:text-5xl'>
             {t('hero.greeting')} <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
