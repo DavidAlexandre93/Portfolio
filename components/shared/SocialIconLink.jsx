@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '../../src/router';
 import React from 'react';
 
 const baseClasses = 'rounded-full shadow-lg shadow-gray-400 p-4 sm:p-5 cursor-pointer';
@@ -33,7 +33,7 @@ const SocialIconLink = ({ href, icon: Icon, label, external = false, onClick, co
   }
 
   return (
-    <Link href={href} aria-label={label}>
+    <Link to={href} aria-label={label}>
       {content}
     </Link>
   );

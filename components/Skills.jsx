@@ -1,4 +1,4 @@
-import Image from 'next/image';
+
 import React, { useEffect, useRef } from 'react';
 import { useI18n } from '../context/I18nContext';
 import { SKILLS } from '../data/siteData';
@@ -64,7 +64,7 @@ const Skills = () => {
             <div key={title} className='skill-card p-4 sm:p-6 shadow-xl rounded-xl transition-transform'>
               <div className='grid grid-cols-[auto,1fr] gap-3 sm:gap-4 justify-center items-center'>
                 <div className='m-auto'>
-                  <Image src={icon} width='48px' height='48px' alt={title} />
+                  <img src={icon} width='48' height='48' alt={title} />
                 </div>
                 <div className='flex flex-col items-start justify-center'>
                   <h3 className='text-base sm:text-lg'>{title}</h3>

@@ -1,18 +1,12 @@
-import React from 'react';
-import Head from 'next/head';
+import React, { useEffect } from 'react';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
-const resume = () => {
+const Resume = () => {
+  useEffect(() => {
+    document.title = 'David Alexandre | Resume';
+  }, []);
   return (
     <>
-      <Head>
-        <title>David Alexandre | Resume</title>
-        <meta
-          name='description'
-          content='Resumo profissional de David Alexandre Fernandes, com foco em desenvolvimento full cycle, DevOps, SRE e cloud computing.'
-        />
-        <link rel='icon' href='/fav.png' />
-      </Head>
 
       <div className='max-w-[940px] mx-auto px-4 sm:px-6 pt-[110px] pb-10'>
         <h2 className='text-center'>Resume</h2>
@@ -123,4 +117,4 @@ const resume = () => {
   );
 };
 
-export default resume;
+export default Resume;

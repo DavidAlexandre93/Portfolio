@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+
 import { useI18n } from '../context/I18nContext';
 import AboutImg from '../public/assets/perfil.png';
 
@@ -55,12 +54,12 @@ const About = () => {
           <p className='about-reveal py-2 text-gray-600'>{t('about.highlight')}</p>
           <p className='about-reveal py-2 text-gray-600'>{t('about.p1')}</p>
           <p className='about-reveal py-2 text-gray-600'>{t('about.p2')}</p>
-          <Link href='https://github.com/DavidAlexandre93?tab=repositories'>
-            <p className='about-reveal py-2 text-gray-600 underline cursor-pointer'>{t('about.github')}</p>
-          </Link>
+          <a href='https://github.com/DavidAlexandre93?tab=repositories' target='_blank' rel='noreferrer' className='about-reveal py-2 text-gray-600 underline cursor-pointer'>
+            {t('about.github')}
+          </a>
         </div>
         <div className='about-reveal about-image-card w-full max-w-[420px] md:max-w-full h-auto m-auto flex items-center justify-center hover:scale-105 ease-in duration-300'>
-          <Image src={AboutImg} className='w-full h-auto object-contain' priority alt='Foto de perfil David Alexandre Fernandes' />
+          <img src={AboutImg} className='w-full h-auto object-contain' alt='Foto de perfil David Alexandre Fernandes' />
         </div>
       </div>
     </div>
