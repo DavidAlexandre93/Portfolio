@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { About, Contact, Main, Projects, Skills } from '../components';
 import { useI18n } from '../context/I18nContext';
 
