@@ -1,12 +1,45 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-const I18nContext = createContext({ locale: 'pt-BR', t: (key) => key, setLocale: () => {} });
+const I18nContext = createContext({ locale: 'en-US', t: (key) => key, setLocale: () => {} });
+
+const LANGUAGE_TO_LOCALE = {
+  ar: 'ar-SA',
+  cs: 'cs-CZ',
+  da: 'da-DK',
+  de: 'de-DE',
+  en: 'en-US',
+  es: 'es-ES',
+  fi: 'fi-FI',
+  fr: 'fr-FR',
+  he: 'he-IL',
+  hi: 'hi-IN',
+  hu: 'hu-HU',
+  id: 'id-ID',
+  it: 'it-IT',
+  ja: 'ja-JP',
+  ko: 'ko-KR',
+  ms: 'ms-MY',
+  nl: 'nl-NL',
+  no: 'no-NO',
+  pl: 'pl-PL',
+  pt: 'pt-BR',
+  ro: 'ro-RO',
+  ru: 'ru-RU',
+  sv: 'sv-SE',
+  th: 'th-TH',
+  tr: 'tr-TR',
+  uk: 'uk-UA',
+  vi: 'vi-VN',
+  zh: 'zh-CN',
+};
 
 const COUNTRY_TO_LOCALE = {
-  BR: 'pt-BR',
-  FR: 'fr-FR',
-  US: 'en-US',
-  JP: 'ja-JP',
+  AR: 'es-ES', AU: 'en-US', AT: 'de-DE', BE: 'fr-FR', BR: 'pt-BR', CA: 'en-US', CH: 'de-DE', CL: 'es-ES', CN: 'zh-CN',
+  CO: 'es-ES', CZ: 'cs-CZ', DE: 'de-DE', DK: 'da-DK', EG: 'ar-SA', ES: 'es-ES', FI: 'fi-FI', FR: 'fr-FR', GB: 'en-US',
+  GR: 'en-US', HK: 'zh-CN', HU: 'hu-HU', ID: 'id-ID', IE: 'en-US', IL: 'he-IL', IN: 'hi-IN', IT: 'it-IT', JP: 'ja-JP',
+  KR: 'ko-KR', MX: 'es-ES', MY: 'ms-MY', NL: 'nl-NL', NO: 'no-NO', NZ: 'en-US', PE: 'es-ES', PH: 'en-US', PL: 'pl-PL',
+  PT: 'pt-BR', RO: 'ro-RO', RU: 'ru-RU', SA: 'ar-SA', SE: 'sv-SE', SG: 'en-US', TH: 'th-TH', TR: 'tr-TR', TW: 'zh-CN',
+  UA: 'uk-UA', US: 'en-US', UY: 'es-ES', VE: 'es-ES', VN: 'vi-VN', ZA: 'en-US',
 };
 
 const MESSAGES = {
@@ -74,37 +107,68 @@ const MESSAGES = {
 
 const normalizeLocale = (locale) => {
   if (!locale) return 'en-US';
-  const direct = Object.keys(MESSAGES).find((key) => key.toLowerCase() === locale.toLowerCase());
-  if (direct) return direct;
-  const lang = locale.slice(0, 2).toLowerCase();
-  if (lang === 'pt') return 'pt-BR';
-  if (lang === 'fr') return 'fr-FR';
-  if (lang === 'ja') return 'ja-JP';
-  return 'en-US';
+  const normalized = locale.replace('_', '-').trim();
+  const supportedLocale = Object.keys(MESSAGES).find((key) => key.toLowerCase() === normalized.toLowerCase());
+  if (supportedLocale) return supportedLocale;
+
+  const [language] = normalized.toLowerCase().split('-');
+  return LANGUAGE_TO_LOCALE[language] || 'en-US';
+};
+
+const resolveFromLocaleCandidates = (candidates = [], fallback = 'en-US') => {
+  for (const candidate of candidates) {
+    const resolved = normalizeLocale(candidate);
+    if (resolved) return resolved;
+  }
+  return fallback;
+};
+
+const resolveFromGeoData = (data) => {
+  if (!data) return null;
+
+  if (typeof data.languages === 'string') {
+    const locales = data.languages.split(',').map((entry) => entry.trim()).filter(Boolean);
+    const localeFromLanguages = resolveFromLocaleCandidates(locales, null);
+    if (localeFromLanguages) return localeFromLanguages;
+  }
+
+  if (data.country_code && COUNTRY_TO_LOCALE[data.country_code]) {
+    return COUNTRY_TO_LOCALE[data.country_code];
+  }
+
+  return null;
 };
 
 export const I18nProvider = ({ children }) => {
-  const [locale, setLocale] = useState('pt-BR');
+  const [locale, setLocale] = useState('en-US');
 
   useEffect(() => {
     const detectLocale = async () => {
       const saved = window.localStorage.getItem('site-locale');
       if (saved) {
-        setLocale(normalizeLocale(saved));
+        const normalizedSavedLocale = normalizeLocale(saved);
+        setLocale(normalizedSavedLocale);
         return;
       }
 
-      let resolvedLocale = normalizeLocale(window.navigator?.language);
+      const browserLocales = window.navigator?.languages?.length
+        ? window.navigator.languages
+        : [window.navigator?.language];
+      let resolvedLocale = resolveFromLocaleCandidates(browserLocales);
+
       try {
-        const response = await fetch('https://ipapi.co/json/');
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 1500);
+        const response = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+        window.clearTimeout(timeout);
+
         if (response.ok) {
           const data = await response.json();
-          if (data?.country_code && COUNTRY_TO_LOCALE[data.country_code]) {
-            resolvedLocale = COUNTRY_TO_LOCALE[data.country_code];
-          }
+          const geoLocale = resolveFromGeoData(data);
+          if (geoLocale) resolvedLocale = geoLocale;
         }
       } catch (error) {
-        resolvedLocale = normalizeLocale(window.navigator?.language);
+        resolvedLocale = resolveFromLocaleCandidates(browserLocales);
       }
 
       setLocale(resolvedLocale);
@@ -114,9 +178,21 @@ export const I18nProvider = ({ children }) => {
     if (typeof window !== 'undefined') detectLocale();
   }, []);
 
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = locale;
+    }
+  }, [locale]);
+
   const value = useMemo(() => ({
     locale,
-    setLocale,
+    setLocale: (nextLocale) => {
+      const normalizedLocale = normalizeLocale(nextLocale);
+      setLocale(normalizedLocale);
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('site-locale', normalizedLocale);
+      }
+    },
     t: (key) => MESSAGES[locale]?.[key] || MESSAGES['en-US'][key] || key,
   }), [locale]);
 
