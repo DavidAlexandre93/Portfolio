@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+
+import { Link } from '../src/router';
 import React, { useEffect, useRef, useState } from 'react';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { useI18n } from '../context/I18nContext';
@@ -57,7 +57,7 @@ const Contact = () => {
         <div className='grid lg:grid-cols-5 gap-6 sm:gap-8'>
           <div className='contact-panel lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4 sm:p-6'>
             <div className='h-full'>
-              <Image className='rounded-xl' src={ContactImg} alt='Contact logo' />
+              <img className='rounded-xl' src={ContactImg} alt='Contact logo' />
               <h2 className='py-2 text-2xl sm:text-3xl'>David Alexandre Fernandes</h2>
               <p>Software Developer | DevOps | SRE</p>
               <p className='py-4'>{t('contact.available')}</p>
@@ -101,10 +101,8 @@ const Contact = () => {
           </div>
         </div>
         <div className='flex justify-center py-12'>
-          <Link href='/'>
-            <a className='rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-              <HiOutlineChevronDoubleUp className='text-[#5651e5]' size={30} />
-            </a>
+          <Link to='/' className='rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
+            <HiOutlineChevronDoubleUp className='text-[#5651e5]' size={30} />
           </Link>
         </div>
       </div>
