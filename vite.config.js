@@ -3,7 +3,7 @@ const { defineConfig } = require('vite');
 module.exports = defineConfig({
   esbuild: {
     loader: 'jsx',
-    include: /.*\.js$/,
+    include: /.*\.[jt]sx?$/,
     exclude: [],
   },
   optimizeDeps: {
