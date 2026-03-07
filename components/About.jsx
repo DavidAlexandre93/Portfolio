@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
 import { useI18n } from '../context/I18nContext';
-import AboutImg from '../public/assets/perfil.png';
 
 const About = () => {
   const aboutRef = useRef(null);
@@ -59,7 +58,7 @@ const About = () => {
           </a>
         </div>
         <div className='about-reveal about-image-card w-full max-w-[420px] md:max-w-full h-auto m-auto flex items-center justify-center hover:scale-105 ease-in duration-300'>
-          <img src={AboutImg} className='w-full h-auto object-contain' alt='Foto de perfil David Alexandre Fernandes' />
+          <img src='/assets/perfil.png' className='w-full h-auto object-contain' alt='Foto de perfil David Alexandre Fernandes' />
         </div>
       </div>
     </div>

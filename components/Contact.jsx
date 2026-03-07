@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { useI18n } from '../context/I18nContext';
 import { SOCIAL_LINKS } from '../data/siteData';
-import ContactImg from '../public/assets/navLogo.svg';
 import SocialIconLink from './shared/SocialIconLink';
 
 const Contact = () => {
@@ -57,7 +56,7 @@ const Contact = () => {
         <div className='grid lg:grid-cols-5 gap-6 sm:gap-8'>
           <div className='contact-panel lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4 sm:p-6'>
             <div className='h-full'>
-              <img className='rounded-xl' src={ContactImg} alt='Contact logo' />
+              <img className='rounded-xl' src='/assets/navLogo.svg' alt='Contact logo' />
               <h2 className='py-2 text-2xl sm:text-3xl'>David Alexandre Fernandes</h2>
               <p>Software Developer | DevOps | SRE</p>
               <p className='py-4'>{t('contact.available')}</p>

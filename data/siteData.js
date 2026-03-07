@@ -2,23 +2,25 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
-import Html from '../public/assets/skills/html.png';
-import Css from '../public/assets/skills/css.png';
-import Javascript from '../public/assets/skills/javascript.svg';
-import ReactImg from '../public/assets/skills/reactjs.svg';
-import Tailwind from '../public/assets/skills/tailwind.svg';
-import Github from '../public/assets/skills/github1.png';
-import Firebase from '../public/assets/skills/firebase.png';
-import NextJS from '../public/assets/skills/nextjs.svg';
-import AWS from '../public/assets/skills/aws.svg';
-import GCP from '../public/assets/skills/gcp.svg';
-import Docker from '../public/assets/skills/docker.svg';
-import Express from '../public/assets/skills/express.svg';
-import FastAPI from '../public/assets/skills/fastapi.svg';
-import Go from '../public/assets/skills/go.svg';
-import Kubernetes from '../public/assets/skills/kubernetes.svg';
-import Typescript from '../public/assets/skills/typescript.svg';
-import ProjectsCover from '../public/assets/projects/logoprojects.svg';
+
+const Html = '/assets/skills/html.png';
+const Css = '/assets/skills/css.png';
+const Javascript = '/assets/skills/javascript.svg';
+const ReactImg = '/assets/skills/reactjs.svg';
+const Tailwind = '/assets/skills/tailwind.svg';
+const Github = '/assets/skills/github1.png';
+const Firebase = '/assets/skills/firebase.png';
+const NextJS = '/assets/skills/nextjs.svg';
+const AWS = '/assets/skills/aws.svg';
+const GCP = '/assets/skills/gcp.svg';
+const Docker = '/assets/skills/docker.svg';
+const Express = '/assets/skills/express.svg';
+const FastAPI = '/assets/skills/fastapi.svg';
+const Go = '/assets/skills/go.svg';
+const Kubernetes = '/assets/skills/kubernetes.svg';
+const Typescript = '/assets/skills/typescript.svg';
+const ProjectsCover = '/assets/projects/logoprojects.svg';
+
 
 export const NAV_LINKS = [
   { key: 'nav.home', href: '/' },
