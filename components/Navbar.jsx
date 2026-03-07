@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useI18n } from '../context/I18nContext';
 import { NAV_LINKS, SOCIAL_LINKS } from '../data/siteData';
-import NavLogo from '../public/assets/navLogo.svg';
 import SocialIconLink from './shared/SocialIconLink';
 
 const Navbar = () => {
@@ -32,7 +31,7 @@ const Navbar = () => {
     <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100] bg-[#ecf0f3]/90 backdrop-blur-md ease-in-out duration-300' : 'fixed w-full h-20 z-[100] bg-transparent'}>
       <div className='flex justify-between items-center w-full h-full px-4 sm:px-6 lg:px-12 2xl:px-16'>
         <Link to='/'>
-          <img src={NavLogo} alt='Logo' width='125' height='50' className='cursor-pointer' />
+          <img src='/assets/navLogo.svg' alt='Logo' width='125' height='50' className='cursor-pointer' />
         </Link>
 
         <div>
@@ -53,7 +52,7 @@ const Navbar = () => {
         <div className={nav ? 'mobile-menu fixed left-0 top-0 w-[84%] max-w-[340px] h-screen bg-[#ecf0f3] p-6 sm:p-8 ease-in duration-500 pointer-events-auto' : 'mobile-menu fixed left-[-100%] top-0 p-8 ease-in duration-500'}>
           <div className='flex w-full items-center justify-between'>
             <Link to='/'>
-              <img src={NavLogo} width='87' height='35' alt='Logo' />
+              <img src='/assets/navLogo.svg' width='87' height='35' alt='Logo' />
             </Link>
             <button type='button' aria-label={t('menu.close')} onClick={() => setNav(false)} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'>
               <AiOutlineClose />

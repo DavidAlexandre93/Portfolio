@@ -1,4 +1,3 @@
-import ProjectsCover from '../public/assets/projects/logoprojects.svg';
 
 const PROJECT_BACK_LINK = '/#projects';
 
@@ -64,7 +63,7 @@ export const getProjectDetail = (projectKey) => {
 
   return {
     ...detail,
-    heroImage: ProjectsCover,
+    heroImage: '/assets/projects/logoprojects.svg',
     backLink: PROJECT_BACK_LINK,
   };
 };
