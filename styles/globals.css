@@ -42,3 +42,69 @@ html {
     @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white;
   }
 }
+
+.app-shell {
+  transition: opacity 0.45s ease, transform 0.55s ease;
+}
+
+.app-shell--hidden {
+  opacity: 0;
+  transform: translateY(8px) scale(0.995);
+  pointer-events: none;
+}
+
+.app-shell--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.app-preloader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: linear-gradient(150deg, rgba(236, 240, 243, 0.85), rgba(225, 230, 241, 0.78));
+  z-index: 120;
+}
+
+.app-preloader--active {
+  opacity: 1;
+}
+
+.app-preloader__pulse {
+  width: 62px;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 4px solid rgba(86, 81, 229, 0.16);
+  border-top-color: #5651e5;
+  animation: spinner-rotate 0.9s linear infinite;
+}
+
+.loader-dot {
+  width: 16px;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  animation: spinner-rotate 0.8s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

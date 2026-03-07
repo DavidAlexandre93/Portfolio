@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from '../components';
 import { I18nProvider } from '../context/I18nContext';
 import Home from '../pages/index.jsx';
@@ -32,10 +32,30 @@ const RouteContent = () => {
 const App = () => (
   <RouterProvider>
     <I18nProvider>
-      <Navbar />
-      <RouteContent />
+      <AppShell />
     </I18nProvider>
   </RouterProvider>
 );
+
+const AppShell = () => {
+  const [booting, setBooting] = useState(true);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setBooting(false), 1400);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  return (
+    <>
+      <div className={`app-preloader ${booting ? 'app-preloader--active' : ''}`} aria-hidden={!booting}>
+        <div className='app-preloader__pulse' />
+      </div>
+      <div className={`app-shell ${booting ? 'app-shell--hidden' : 'app-shell--visible'}`}>
+        <Navbar />
+        <RouteContent />
+      </div>
+    </>
+  );
+};
 
 export default App;

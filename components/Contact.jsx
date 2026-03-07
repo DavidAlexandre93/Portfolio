@@ -12,6 +12,8 @@ const Contact = () => {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [sending, setSending] = useState(false);
+  const [feedback, setFeedback] = useState('');
   const contactRef = useRef(null);
   const { t } = useI18n();
 
@@ -39,13 +41,38 @@ const Contact = () => {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    if (!feedback || !window.gsap) return undefined;
+    const toast = contactRef.current?.querySelector('.contact-feedback');
+    if (!toast) return undefined;
+    const tl = window.gsap.timeline();
+    tl.fromTo(toast, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.25 })
+      .to(toast, { opacity: 1, duration: 1.5 })
+      .to(toast, {
+        opacity: 0,
+        y: -8,
+        duration: 0.25,
+        onComplete: () => setFeedback(''),
+      });
+
+    return () => tl.kill();
+  }, [feedback]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setName('');
-    setPhone('');
-    setEmail('');
-    setSubject('');
-    setMessage('');
+    if (sending) return;
+
+    setSending(true);
+
+    window.setTimeout(() => {
+      setName('');
+      setPhone('');
+      setEmail('');
+      setSubject('');
+      setMessage('');
+      setSending(false);
+      setFeedback('Mensagem enviada com sucesso. Obrigado pelo contato!');
+    }, 1050);
   };
 
   return (
@@ -94,8 +121,18 @@ const Contact = () => {
                   <label className='uppercase text-sm py-2'>{t('contact.message')}</label>
                   <textarea className='border-2 rounded-lg p-3 border-gray-300 min-h-[170px]' rows='8' value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
-                <button className='w-full p-4 text-gray-100 mt-4'>{t('contact.send')}</button>
+                <button type='submit' disabled={sending} className={`w-full p-4 text-gray-100 mt-4 flex items-center justify-center gap-2 ${sending ? 'opacity-80 cursor-not-allowed' : ''}`}>
+                  {sending ? (
+                    <>
+                      <span className='loader-dot' />
+                      <span>Enviando...</span>
+                    </>
+                  ) : (
+                    t('contact.send')
+                  )}
+                </button>
               </form>
+              {feedback && <p className='contact-feedback mt-4 rounded-lg bg-green-100 text-green-700 px-3 py-2 text-sm'>{feedback}</p>}
             </div>
           </div>
         </div>
