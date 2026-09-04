@@ -33,15 +33,6 @@ const LANGUAGE_TO_LOCALE = {
   zh: 'zh-CN',
 };
 
-const COUNTRY_TO_LOCALE = {
-  AR: 'es-ES', AU: 'en-US', AT: 'de-DE', BE: 'fr-FR', BR: 'pt-BR', CA: 'en-US', CH: 'de-DE', CL: 'es-ES', CN: 'zh-CN',
-  CO: 'es-ES', CZ: 'cs-CZ', DE: 'de-DE', DK: 'da-DK', EG: 'ar-SA', ES: 'es-ES', FI: 'fi-FI', FR: 'fr-FR', GB: 'en-US',
-  GR: 'en-US', HK: 'zh-CN', HU: 'hu-HU', ID: 'id-ID', IE: 'en-US', IL: 'he-IL', IN: 'hi-IN', IT: 'it-IT', JP: 'ja-JP',
-  KR: 'ko-KR', MX: 'es-ES', MY: 'ms-MY', NL: 'nl-NL', NO: 'no-NO', NZ: 'en-US', PE: 'es-ES', PH: 'en-US', PL: 'pl-PL',
-  PT: 'pt-BR', RO: 'ro-RO', RU: 'ru-RU', SA: 'ar-SA', SE: 'sv-SE', SG: 'en-US', TH: 'th-TH', TR: 'tr-TR', TW: 'zh-CN',
-  UA: 'uk-UA', US: 'en-US', UY: 'es-ES', VE: 'es-ES', VN: 'vi-VN', ZA: 'en-US',
-};
-
 const MESSAGES = {
   'pt-BR': {
     'nav.home': 'Home', 'nav.about': 'Sobre', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.resume': 'Currículo', 'nav.contact': 'Contato',
@@ -123,22 +114,6 @@ const resolveFromLocaleCandidates = (candidates = [], fallback = 'en-US') => {
   return fallback;
 };
 
-const resolveFromGeoData = (data) => {
-  if (!data) return null;
-
-  if (typeof data.languages === 'string') {
-    const locales = data.languages.split(',').map((entry) => entry.trim()).filter(Boolean);
-    const localeFromLanguages = resolveFromLocaleCandidates(locales, null);
-    if (localeFromLanguages) return localeFromLanguages;
-  }
-
-  if (data.country_code && COUNTRY_TO_LOCALE[data.country_code]) {
-    return COUNTRY_TO_LOCALE[data.country_code];
-  }
-
-  return null;
-};
-
 export const I18nProvider = ({ children }) => {
   const [locale, setLocale] = useState('en-US');
 
@@ -154,22 +129,7 @@ export const I18nProvider = ({ children }) => {
       const browserLocales = window.navigator?.languages?.length
         ? window.navigator.languages
         : [window.navigator?.language];
-      let resolvedLocale = resolveFromLocaleCandidates(browserLocales);
-
-      try {
-        const controller = new AbortController();
-        const timeout = window.setTimeout(() => controller.abort(), 1500);
-        const response = await fetch('https://ipapi.co/json/', { signal: controller.signal });
-        window.clearTimeout(timeout);
-
-        if (response.ok) {
-          const data = await response.json();
-          const geoLocale = resolveFromGeoData(data);
-          if (geoLocale) resolvedLocale = geoLocale;
-        }
-      } catch (error) {
-        resolvedLocale = resolveFromLocaleCandidates(browserLocales);
-      }
+      const resolvedLocale = resolveFromLocaleCandidates(browserLocales);
 
       setLocale(resolvedLocale);
       window.localStorage.setItem('site-locale', resolvedLocale);

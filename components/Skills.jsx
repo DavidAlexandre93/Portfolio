@@ -1,61 +1,13 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useI18n } from '../context/I18nContext';
 import { SKILLS } from '../data/siteData';
 
 const Skills = () => {
-  const sectionRef = useRef(null);
   const { t } = useI18n();
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !sectionRef.current || !window.gsap) return undefined;
-    const { gsap, ScrollTrigger } = window;
-    if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.skill-card',
-        { y: 35, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.06,
-          duration: 0.55,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' },
-        }
-      );
-    }, sectionRef);
-
-    const cards = sectionRef.current.querySelectorAll('.skill-card');
-    const listeners = [];
-
-    cards.forEach((card) => {
-      const onEnter = () => {
-        if (!window.Motion?.animate) return;
-        window.Motion.animate(card, { transform: ['translateY(0px)', 'translateY(-8px) scale(1.03)'] }, { duration: 0.22, fill: 'forwards' });
-      };
-      const onLeave = () => {
-        if (!window.Motion?.animate) return;
-        window.Motion.animate(card, { transform: ['translateY(-8px) scale(1.03)', 'translateY(0px) scale(1)'] }, { duration: 0.22, fill: 'forwards' });
-      };
-
-      card.addEventListener('mouseenter', onEnter);
-      card.addEventListener('mouseleave', onLeave);
-      listeners.push({ card, onEnter, onLeave });
-    });
-
-    return () => {
-      listeners.forEach(({ card, onEnter, onLeave }) => {
-        card.removeEventListener('mouseenter', onEnter);
-        card.removeEventListener('mouseleave', onLeave);
-      });
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    <div id='skills' ref={sectionRef} className='w-full p-4 sm:p-6 md:p-8'>
+    <div id='skills' className='w-full p-4 sm:p-6 md:p-8'>
       <div className='max-w-[1240px] mx-auto flex flex-col justify-center h-full'>
         <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>{t('nav.skills')}</p>
         <h2 className='py-4'>{t('skills.subtitle')}</h2>

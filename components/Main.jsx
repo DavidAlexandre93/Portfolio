@@ -1,103 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link } from '../src/router';
 import { SOCIAL_LINKS } from '../data/siteData';
 import { useI18n } from '../context/I18nContext';
 import SocialIconLink from './shared/SocialIconLink';
 
 const Main = () => {
-  const heroRef = useRef(null);
-  const pointerRef = useRef({ x: 0, y: 0 });
-  const rafRef = useRef(null);
-  const [isReady, setIsReady] = useState(false);
   const { t } = useI18n();
 
-  useEffect(() => {
-    const timer = window.setTimeout(() => setIsReady(true), 300);
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !heroRef.current || !window.gsap) return undefined;
-
-    const hero = heroRef.current;
-    const cards = hero.querySelectorAll('.social-card');
-    const title = hero.querySelector('.hero-title');
-    const subtitle = hero.querySelector('.hero-subtitle');
-    const text = hero.querySelector('.hero-text');
-
-    const tl = window.gsap.timeline({ defaults: { ease: 'power3.out' } });
-    tl.fromTo(title, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9 })
-      .fromTo(subtitle, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.6')
-      .fromTo(text, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5')
-      .fromTo(cards, { y: 18, opacity: 0, scale: 0.92 }, { y: 0, opacity: 1, scale: 1, duration: 0.45, stagger: 0.12 }, '-=0.4');
-
-    const orbATween = window.gsap.to('.hero-orb-a', { x: 35, y: -16, scale: 1.07, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    const orbBTween = window.gsap.to('.hero-orb-b', { x: -28, y: 22, scale: 1.08, duration: 6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    const orbCTween = window.gsap.to('.hero-orb-c', { x: 18, y: -22, scale: 1.1, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
-    return () => {
-      tl.kill();
-      orbATween.kill();
-      orbBTween.kill();
-      orbCTween.kill();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !heroRef.current) return undefined;
-    const hero = heroRef.current;
-
-    const updateParallax = () => {
-      rafRef.current = null;
-      const layers = hero.querySelectorAll('[data-parallax]');
-      layers.forEach((layer) => {
-        const speed = Number(layer.getAttribute('data-parallax') || 0);
-        const x = pointerRef.current.x * speed;
-        const y = pointerRef.current.y * speed;
-        layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      });
-    };
-
-    const onMove = (event) => {
-      const rect = hero.getBoundingClientRect();
-      pointerRef.current = {
-        x: (event.clientX - rect.left - rect.width / 2) / 45,
-        y: (event.clientY - rect.top - rect.height / 2) / 45,
-      };
-
-      if (!rafRef.current) rafRef.current = window.requestAnimationFrame(updateParallax);
-    };
-
-    const onLeave = () => {
-      pointerRef.current = { x: 0, y: 0 };
-      if (!rafRef.current) rafRef.current = window.requestAnimationFrame(updateParallax);
-    };
-
-    hero.addEventListener('mousemove', onMove);
-    hero.addEventListener('mouseleave', onLeave);
-
-    return () => {
-      hero.removeEventListener('mousemove', onMove);
-      hero.removeEventListener('mouseleave', onLeave);
-      if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
-
   return (
-    <div id='home' ref={heroRef} className='w-full min-h-screen text-center relative overflow-hidden'>
-      <div data-parallax='0.8' className='hero-orb-a absolute -top-28 -left-24 w-56 h-56 sm:w-72 sm:h-72 bg-violet-300/40 rounded-full blur-3xl will-change-transform' />
-      <div data-parallax='-1' className='hero-orb-b absolute top-36 -right-24 w-64 h-64 sm:w-80 sm:h-80 bg-sky-300/40 rounded-full blur-3xl will-change-transform' />
-      <div data-parallax='0.5' className='hero-orb-c absolute bottom-8 left-[10%] sm:left-[25%] w-40 h-40 sm:w-56 sm:h-56 bg-indigo-300/30 rounded-full blur-3xl will-change-transform' />
-
-      <div className='max-w-[1240px] w-full min-h-screen mx-auto px-4 sm:px-6 md:px-10 flex justify-center items-center pt-20 sm:pt-24'>
-        <div className={`backdrop-blur-[2px] transition-all duration-700 ${isReady ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.985]'}`}>
+    <section id='home' className='hero-shell'>
+      <div className='hero-grid' />
+      <div className='hero-content'>
+        <div className='hero-copy'>
           <p className='uppercase text-xs sm:text-sm tracking-[0.22em] text-gray-600'>{t('hero.tagline')}</p>
           <h1 className='py-4 text-gray-700 hero-title text-3xl sm:text-5xl'>
             {t('hero.greeting')} <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
           </h1>
           <h1 className='py-2 text-gray-700 hero-subtitle text-xl sm:text-3xl md:text-4xl'>Software Developer | DevOps | SRE | Cloud | AI | Blockchain</h1>
           <p className='hero-text py-4 text-gray-600 max-w-3xl mx-auto text-sm sm:text-base md:text-lg'>{t('hero.summary')}</p>
-          <div className='flex items-center justify-center gap-3 pt-5'>
+          <div className='hero-actions'>
             <Link to='#projects' className='hero-action-chip'>
               {t('projects.title')}
             </Link>
@@ -114,11 +35,8 @@ const Main = () => {
           </div>
         </div>
       </div>
-
-      <div className='hero-scroll-cue' aria-hidden='true'>
-        <span className='hero-scroll-cue__dot' />
-      </div>
-    </div>
+      <aside className='hero-signal' aria-label='Resumo profissional'><span>01</span><strong>Full cycle</strong><span>02</span><strong>Cloud & AI</strong><span>03</span><strong>Quality first</strong></aside>
+    </section>
   );
 };
 

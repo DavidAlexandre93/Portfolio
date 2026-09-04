@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { About, Contact, Main, Projects, Skills } from '../components';
+import { About, Assistant, Contact, Main, Projects, Skills } from '../components';
 import { useI18n } from '../context/I18nContext';
 
 export default function Home() {
@@ -20,6 +20,7 @@ export default function Home() {
   return (
     <div>
       <Main />
+      <Assistant />
       <About />
       <Skills />
       <Projects />

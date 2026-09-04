@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Navbar } from '../components';
 import { I18nProvider } from '../context/I18nContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Home from '../pages/index.jsx';
 import Resume from '../pages/resume';
 import Crypto from '../pages/crypto';
@@ -31,38 +32,15 @@ const RouteContent = () => {
 
 const App = () => (
   <RouterProvider>
-    <I18nProvider>
-      <AppShell />
-    </I18nProvider>
+    <ThemeProvider><I18nProvider><AppShell /></I18nProvider></ThemeProvider>
   </RouterProvider>
 );
 
 const AppShell = () => {
-  const [booting, setBooting] = useState(true);
   const { path } = useRouter();
 
-  useEffect(() => {
-    const timeout = window.setTimeout(() => setBooting(false), 1400);
-    return () => window.clearTimeout(timeout);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || booting || !window.gsap) return;
-    window.gsap.fromTo('.route-shell', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' });
-  }, [path, booting]);
-
   return (
-    <>
-      <div className={`app-preloader ${booting ? 'app-preloader--active' : ''}`} aria-hidden={!booting}>
-        <div className='app-preloader__pulse' />
-      </div>
-      <div className={`app-shell ${booting ? 'app-shell--hidden' : 'app-shell--visible'}`}>
-        <Navbar />
-        <main key={path} className='route-shell'>
-          <RouteContent />
-        </main>
-      </div>
-    </>
+    <div className='app-shell'><Navbar /><a className='skip-link' href='#main-content'>Pular para o conteúdo</a><main id='main-content' key={path} className='route-shell'><RouteContent /></main></div>
   );
 };
 

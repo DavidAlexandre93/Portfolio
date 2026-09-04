@@ -1,7 +1,7 @@
 ## 1. Baseline e higiene do repositório
 
-- [ ] 1.1 Registrar inventário de código, rotas, assets, dependências, integrações e configurações atuais em `docs/audit.md`; verificar que cada arquivo versionado relevante aparece na auditoria ou em uma exclusão justificada.
-- [ ] 1.2 Executar e documentar baseline de `npm test`, `npm run lint`, `npm run build`, tamanho do bundle, Lighthouse e axe; verificar que os resultados e falhas pré-existentes estão reproduzíveis.
+- [ ] 1.1 Registrar inventário de código, rotas, assets, dependências, integrações e configurações atuais em `docs/audit.md`; verificar que cada arquivo versionado relevante aparece na auditoria ou em uma exclusão justificada. (Inventário inicial registrado; enumeração completa ainda pendente.)
+- [ ] 1.2 Executar e documentar baseline de `npm test`, `npm run lint`, `npm run build`, tamanho do bundle, Lighthouse e axe; verificar que os resultados e falhas pré-existentes estão reproduzíveis. (Testes, build e lint registrados; Lighthouse/axe ainda não configurados.)
 - [ ] 1.3 Procurar `.claude`, `CLAUDE.md`, comandos e referências Claude Code em arquivos versionados e ignorados; remover somente os encontrados e verificar com busca case-insensitive que não restou estrutura Claude, preservando `.agents` e `openspec`.
 - [ ] 1.4 Auditar dependências diretas por uso real; remover Firebase, gh-pages, engines de animação e ícones não usados após a migração e verificar com `npm ls --depth=0` e busca de imports.
 - [ ] 1.5 Eleger npm e `package-lock.json` como fonte única, remover `yarn.lock` e referências Yarn da CI/documentação e verificar que `npm ci` funciona em checkout limpo.
@@ -21,7 +21,7 @@
 - [ ] 3.2 Implementar loader de configuração centralizado com ambientes e feature flags fechados; verificar ausência opcional, URLs inválidas, sampling fora de faixa e detecção de segredo em `VITE_*`.
 - [ ] 3.3 Consolidar perfil, experiência, skills, projetos, links e SEO em conteúdo tipado e imutável; verificar ids únicos, protocolos permitidos, rotas existentes e schemas no teste de conteúdo.
 - [ ] 3.4 Migrar traduções para catálogos tipados português/inglês, mantendo francês/japonês apenas se completos; verificar paridade de chaves e fallback sem mostrar chave interna.
-- [ ] 3.5 Substituir geolocalização por IP por preferência explícita e `navigator.languages`; verificar com teste que nenhum fetch ocorre para detectar idioma.
+- [x] 3.5 Substituir geolocalização por IP por preferência explícita e `navigator.languages`; verificar com teste que nenhum fetch ocorre para detectar idioma.
 - [ ] 3.6 Migrar bootstrap, providers, componentes e páginas para `.ts`/`.tsx`; verificar que não restam `.js/.jsx` de aplicação fora de exceções de tooling e que `tsc --noEmit` passa.
 
 ## 4. Roteamento, shell e SEO
@@ -38,7 +38,7 @@
 - [ ] 5.2 Implementar provider e seletor de tema `light | dark | system` sem flash; verificar preferência inicial, mudança do sistema, persistência explícita e hidratação inicial em testes.
 - [ ] 5.3 Criar primitives acessíveis de Button, Link, Badge, Card, Section, Field, Status e Dialog/Drawer; verificar estados hover/focus/disabled/error e axe sem violações.
 - [ ] 5.4 Redesenhar navbar e menu responsivo com marca visível, progresso discreto e focus trap; verificar Escape, clique externo, retorno de foco e viewport de 320 px.
-- [ ] 5.5 Redesenhar hero como composição editorial tecnológica com CTA de projetos, IA e contato; verificar conteúdo imediato sem JS de animação e sem layout shift relevante.
+- [x] 5.5 Redesenhar hero como composição editorial tecnológica com CTA de projetos, IA e contato; verificar conteúdo imediato sem JS de animação e sem layout shift relevante.
 - [ ] 5.6 Redesenhar seções Sobre, Skills e Projetos com hierarquia, filtros ou agrupamento úteis e cards navegáveis; verificar semântica, imagens responsivas e operação por teclado/toque.
 - [ ] 5.7 Redesenhar detalhes de projeto, currículo, 404 e estados vazios preservando conteúdo e URLs; verificar responsividade mobile/desktop e metadados corretos.
 - [ ] 5.8 Instalar e usar uma única biblioteca de movimento empacotada, remover GSAP/Motion globais e scripts CDN; verificar busca sem `window.gsap`, `window.Motion` ou scripts remotos e teste de movimento reduzido.

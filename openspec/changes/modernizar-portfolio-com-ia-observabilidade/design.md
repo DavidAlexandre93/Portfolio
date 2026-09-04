@@ -194,3 +194,16 @@ Rollback: preservar o artefato anterior e a configuração de hosting; se os smo
 
 - Qual plataforma implementará futuramente o gateway definido por OpenAPI (Firebase Functions, Cloudflare Workers ou serviço existente)? A escolha não altera o contrato nem bloqueia o fallback local.
 - Qual coletor OTLP e política organizacional de retenção serão usados em produção? A exportação permanecerá desativada até que endpoint, CORS e retenção estejam aprovados.
+
+## Implementation Slice 2026-09-04
+
+Esta execução implementou a primeira superfície que define a percepção do produto e que funciona sem infraestrutura privada:
+
+- o shell foi modernizado com tokens CSS, tema claro/escuro/system, skip link, marca visível, tipografia local e sem preloader artificial;
+- o hero recebeu CTAs de exploração e um launcher de assistente contextual;
+- o assistente local foi implementado como busca grounded determinística sobre `siteData`/`projectDetails`, com histórico apenas em memória, citações e limitações explícitas;
+- o provider `grounded-search` fica visível e preparado para gateway remoto futuro, sem credencial ou chamada remota no bundle padrão;
+- o contato deixou de declarar envio concluído e gera um briefing local para `mailto:`, sem armazenamento no site;
+- scripts CDN de GSAP/Motion e dependências de animação global foram removidos; movimento não essencial respeita `prefers-reduced-motion`.
+
+Este recorte é deliberadamente incremental: contratos remotos, OpenAPI, telemetria, health e migração TypeScript continuam sendo tarefas posteriores e não serão considerados implementados apenas pela existência da interface.

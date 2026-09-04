@@ -62,16 +62,18 @@ const Contact = () => {
     e.preventDefault();
     if (sending) return;
 
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setFeedback('Preencha nome, email e mensagem para montar o briefing.');
+      return;
+    }
+
     setSending(true);
 
     window.setTimeout(() => {
-      setName('');
-      setPhone('');
-      setEmail('');
-      setSubject('');
-      setMessage('');
+      const body = [`Nome: ${name}`, `Telefone: ${phone}`, '', message].join('\n');
+      window.location.href = `mailto:davidalexandrefernandes@gmail.com?subject=${encodeURIComponent(subject || 'Contato pelo portfólio')}&body=${encodeURIComponent(body)}`;
       setSending(false);
-      setFeedback('Mensagem enviada com sucesso. Obrigado pelo contato!');
+      setFeedback('Briefing preparado no seu cliente de email. Nada foi armazenado neste site.');
     }, 1050);
   };
 
@@ -102,7 +104,7 @@ const Contact = () => {
                 <div className='grid md:grid-cols-2 gap-4 w-full py-2'>
                   <div className='flex flex-col'>
                     <label className='uppercase text-sm py-2'>{t('contact.name')}</label>
-                    <input className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={name} onChange={(e) => setName(e.target.value)} />
+                    <input required className='border-2 rounded-lg p-3 flex border-gray-300' type='text' value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
                   <div className='flex flex-col'>
                     <label className='uppercase text-sm py-2'>{t('contact.phone')}</label>
@@ -111,7 +113,7 @@ const Contact = () => {
                 </div>
                 <div className='flex flex-col py-2'>
                   <label className='uppercase text-sm py-2'>{t('contact.email')}</label>
-                  <input className='border-2 rounded-lg p-3 flex border-gray-300' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <input required className='border-2 rounded-lg p-3 flex border-gray-300' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className='flex flex-col py-2'>
                   <label className='uppercase text-sm py-2'>{t('contact.subject')}</label>
@@ -119,7 +121,7 @@ const Contact = () => {
                 </div>
                 <div className='flex flex-col py-2'>
                   <label className='uppercase text-sm py-2'>{t('contact.message')}</label>
-                  <textarea className='border-2 rounded-lg p-3 border-gray-300 min-h-[170px]' rows='8' value={message} onChange={(e) => setMessage(e.target.value)} />
+                  <textarea required className='border-2 rounded-lg p-3 border-gray-300 min-h-[170px]' rows='8' value={message} onChange={(e) => setMessage(e.target.value)} />
                 </div>
                 <button type='submit' disabled={sending} className={`w-full p-4 text-gray-100 mt-4 flex items-center justify-center gap-2 ${sending ? 'opacity-80 cursor-not-allowed' : ''}`}>
                   {sending ? (

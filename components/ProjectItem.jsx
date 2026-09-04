@@ -6,10 +6,6 @@ const ProjectItem = ({ title, backgroundImg, tech, projectUrl }) => {
   const cardRef = useRef(null);
   const { t } = useI18n();
 
-  useEffect(() => {
-    if (!cardRef.current || !window.gsap) return;
-    window.gsap.fromTo(cardRef.current, { rotateX: 8, transformPerspective: 1000 }, { rotateX: 0, duration: 0.8, ease: 'power2.out' });
-  }, []);
 
   const animateCard = (active) => {
     if (!cardRef.current || !window.Motion?.animate) return;

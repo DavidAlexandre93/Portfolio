@@ -1,36 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useI18n } from '../context/I18nContext';
 import { PROJECTS } from '../data/siteData';
 import ProjectItem from './ProjectItem';
 
 const Projects = () => {
-  const projectsRef = useRef(null);
   const { t } = useI18n();
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !projectsRef.current || !window.gsap) return;
-    const { gsap, ScrollTrigger } = window;
-    if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.project-card',
-        { opacity: 0, y: 45 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: projectsRef.current, start: 'top 74%' },
-        }
-      );
-    }, projectsRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div id='projects' ref={projectsRef} className='w-full'>
+    <div id='projects' className='w-full'>
       <div className='max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 py-16'>
         <p className='text-lg sm:text-xl tracking-widest uppercase text-[#5651e5]'>{t('projects.title')}</p>
         <h2 className='py-4'>{t('projects.subtitle')}</h2>
