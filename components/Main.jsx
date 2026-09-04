@@ -16,7 +16,7 @@ const Main = () => {
           <h1 className='py-4 text-gray-700 hero-title text-3xl sm:text-5xl'>
             {t('hero.greeting')} <span className='text-[#5651e5]'> David Alexandre Fernandes</span>
           </h1>
-          <h1 className='py-2 text-gray-700 hero-subtitle text-xl sm:text-3xl md:text-4xl'>Software Developer | DevOps | SRE | Cloud | AI | Blockchain</h1>
+          <h1 className='py-2 text-gray-700 hero-subtitle text-xl sm:text-3xl md:text-4xl'>Engenheiro de Software Sênior | Arquitetura | Cloud | IA</h1>
           <p className='hero-text py-4 text-gray-600 max-w-3xl mx-auto text-sm sm:text-base md:text-lg'>{t('hero.summary')}</p>
           <div className='hero-actions'>
             <Link to='#projects' className='hero-action-chip'>

@@ -71,7 +71,7 @@ const Contact = () => {
 
     window.setTimeout(() => {
       const body = [`Nome: ${name}`, `Telefone: ${phone}`, '', message].join('\n');
-      window.location.href = `mailto:davidalexandrefernandes@gmail.com?subject=${encodeURIComponent(subject || 'Contato pelo portfólio')}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:davidalexandrefernandes@outlook.com?subject=${encodeURIComponent(subject || 'Contato pelo portfólio')}&body=${encodeURIComponent(body)}`;
       setSending(false);
       setFeedback('Briefing preparado no seu cliente de email. Nada foi armazenado neste site.');
     }, 1050);
@@ -87,7 +87,8 @@ const Contact = () => {
             <div className='h-full'>
               <img className='rounded-xl' src='/assets/navLogo.svg' alt='Contact logo' />
               <h2 className='py-2 text-2xl sm:text-3xl'>David Alexandre Fernandes</h2>
-              <p>Software Developer | DevOps | SRE</p>
+              <p>Engenheiro de Software Sênior | Arquitetura | Cloud | IA</p>
+              <p className='pt-2 text-sm'>São Paulo - SP · davidalexandrefernandes@outlook.com</p>
               <p className='py-4'>{t('contact.available')}</p>
               <p className='uppercase pt-8'>{t('contact.connectMe')}</p>
               <div className='flex flex-wrap items-center gap-3 py-4'>

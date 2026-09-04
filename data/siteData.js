@@ -32,13 +32,15 @@ export const NAV_LINKS = [
 ];
 
 export const SOCIAL_LINKS = [
-  { key: 'LinkedIn', href: 'https://www.linkedin.com/in/david-fernandes-08b005b4/', icon: FaLinkedinIn, external: true },
+  { key: 'LinkedIn', href: 'https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/', icon: FaLinkedinIn, external: true },
   { key: 'GitHub', href: 'https://github.com/DavidAlexandre93', icon: FaGithub, external: true },
   { key: 'Calendly', href: 'https://calendly.com/davidalexandrefernandes', icon: AiOutlineMail, external: true },
   { key: 'nav.resume', href: '/resume', icon: BsFillPersonLinesFill, external: false },
 ];
 
 export const SKILLS = [
+  { title: 'Java', icon: Javascript },
+  { title: 'Spring Boot', icon: Typescript },
   { title: 'HTML', icon: Html },
   { title: 'CSS', icon: Css },
   { title: 'JavaScript', icon: Javascript },
@@ -55,11 +57,16 @@ export const SKILLS = [
   { title: 'Go', icon: Go },
   { title: 'Kubernetes', icon: Kubernetes },
   { title: 'TypeScript', icon: Typescript },
+  { title: 'Node.js', icon: Express },
+  { title: 'Kafka', icon: Go },
+  { title: 'Redis', icon: Firebase },
+  { title: 'Terraform', icon: Docker },
+  { title: 'Azure', icon: GCP },
 ];
 
 export const PROJECTS = [
-  { title: 'Projeto Integrador - Bootcamp Mercado Livre', backgroundImg: ProjectsCover, projectUrl: '/property', tech: 'Spring Boot · Java · MySQL' },
-  { title: 'Hortelan (IoT + Web)', backgroundImg: ProjectsCover, projectUrl: '/crypto', tech: 'PHP · MySQL · JavaScript · Arduino' },
-  { title: 'API REST com FastAPI', backgroundImg: ProjectsCover, projectUrl: '/netflix', tech: 'FastAPI · Python · MySQL' },
-  { title: 'Website Institucional', backgroundImg: ProjectsCover, projectUrl: '/twitch', tech: 'Next.js · Tailwind CSS' },
+  { title: 'Projeto Integrador - Bootcamp Mercado Livre', backgroundImg: ProjectsCover, projectUrl: '/property', tech: 'Spring Boot · Java · MySQL · Jenkins' },
+  { title: 'Hortelan - Plataforma IoT', backgroundImg: ProjectsCover, projectUrl: '/crypto', tech: 'PHP · IoT · MySQL · Arduino' },
+  { title: 'API REST com FastAPI', backgroundImg: ProjectsCover, projectUrl: '/netflix', tech: 'FastAPI · Python · MySQL · Pytest' },
+  { title: 'Website Institucional', backgroundImg: ProjectsCover, projectUrl: '/twitch', tech: 'Next.js · Tailwind CSS · Auth' },
 ];

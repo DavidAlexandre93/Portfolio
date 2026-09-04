@@ -207,3 +207,7 @@ Esta execução implementou a primeira superfície que define a percepção do p
 - scripts CDN de GSAP/Motion e dependências de animação global foram removidos; movimento não essencial respeita `prefers-reduced-motion`.
 
 Este recorte é deliberadamente incremental: contratos remotos, OpenAPI, telemetria, health e migração TypeScript continuam sendo tarefas posteriores e não serão considerados implementados apenas pela existência da interface.
+
+## Content Update 2026-09-04
+
+O currículo fornecido pelo proprietário do portfólio passou a ser a fonte factual desta atualização de conteúdo. O site agora comunica o posicionamento de Engenheiro de Software Sênior com 10 anos em tecnologia, registra Dock, Bradesco, Mercado Livre, Itaú, Cognizant e Tech Mahindra, inclui formação acadêmica/certificados e destaca arquitetura, cloud, observabilidade e IA aplicada com LLMs, RAG e MCP. O perfil público do LinkedIn foi atualizado para `david-alexandre-fernandes-08b005b4` nos links de perfil; nenhuma informação foi inferida além do material fornecido.

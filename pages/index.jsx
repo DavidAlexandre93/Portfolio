@@ -6,7 +6,7 @@ export default function Home() {
   const { t } = useI18n();
 
   useEffect(() => {
-    document.title = 'David Alexandre Fernandes | Software Developer | DevOps | Software Quality | Cloud Computing | Artificial Intelligence (AI) | Blockchain(NFT/Metaverse)';
+    document.title = 'David Alexandre Fernandes | Senior Software Engineer | Architecture | Cloud | Applied AI';
 
     let description = document.querySelector('meta[name="description"]');
     if (!description) {
